@@ -210,6 +210,108 @@ private:
 };
 
 /*---------------------------------------------------------------------------------------------------------------------+
+| public static objects
++---------------------------------------------------------------------------------------------------------------------*/
+
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL1_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma1Channel1Parameters {DMA1_BASE, DMA1_Channel1_BASE,
+		DMA_REG_SHIFT_CHANNEL1};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL1_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL2_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma1Channel2Parameters {DMA1_BASE, DMA1_Channel2_BASE,
+		DMA_REG_SHIFT_CHANNEL2};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL2_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL3_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma1Channel3Parameters {DMA1_BASE, DMA1_Channel3_BASE,
+		DMA_REG_SHIFT_CHANNEL3};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL3_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL4_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma1Channel4Parameters {DMA1_BASE, DMA1_Channel4_BASE,
+		DMA_REG_SHIFT_CHANNEL4};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL4_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL5_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma1Channel5Parameters {DMA1_BASE, DMA1_Channel5_BASE,
+		DMA_REG_SHIFT_CHANNEL5};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL5_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL6_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma1Channel6Parameters {DMA1_BASE, DMA1_Channel6_BASE,
+		DMA_REG_SHIFT_CHANNEL6};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL6_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL7_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma1Channel7Parameters {DMA1_BASE, DMA1_Channel7_BASE,
+		DMA_REG_SHIFT_CHANNEL7};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL7_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA2_CHANNEL1_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma2Channel1Parameters {DMA2_BASE, DMA2_Channel1_BASE,
+		DMA_REG_SHIFT_CHANNEL1};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA2_CHANNEL1_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA2_CHANNEL2_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma2Channel2Parameters {DMA2_BASE, DMA2_Channel2_BASE,
+		DMA_REG_SHIFT_CHANNEL2};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA2_CHANNEL2_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA2_CHANNEL3_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma2Channel3Parameters {DMA2_BASE, DMA2_Channel3_BASE,
+		DMA_REG_SHIFT_CHANNEL3};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA2_CHANNEL3_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA2_CHANNEL4_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma2Channel4Parameters {DMA2_BASE, DMA2_Channel4_BASE,
+		DMA_REG_SHIFT_CHANNEL4};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA2_CHANNEL4_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA2_CHANNEL5_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma2Channel5Parameters {DMA2_BASE, DMA2_Channel5_BASE,
+		DMA_REG_SHIFT_CHANNEL5};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA2_CHANNEL5_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA2_CHANNEL6_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma2Channel6Parameters {DMA2_BASE, DMA2_Channel6_BASE,
+		DMA_REG_SHIFT_CHANNEL6};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA2_CHANNEL6_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA2_CHANNEL7_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma2Channel7Parameters {DMA2_BASE, DMA2_Channel7_BASE,
+		DMA_REG_SHIFT_CHANNEL7};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA2_CHANNEL7_ENABLE
+
+/*---------------------------------------------------------------------------------------------------------------------+
 | public functions
 +---------------------------------------------------------------------------------------------------------------------*/
 
