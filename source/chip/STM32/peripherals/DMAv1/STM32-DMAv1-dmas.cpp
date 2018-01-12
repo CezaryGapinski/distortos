@@ -105,6 +105,75 @@ ChipDmaLowLevel dma2Channel7 {ChipDmaLowLevel::dma2Channel7Parameters};
 
 #endif	// def CONFIG_CHIP_STM32_DMAV1_DMA2_CHANNEL7_ENABLE
 
+/*---------------------------------------------------------------------------------------------------------------------+
+| global functions
++---------------------------------------------------------------------------------------------------------------------*/
+
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL1_ENABLE
+
+/**
+ * \brief DMA1 Channel1 interrupt handler
+ */
+
+extern "C" void DMA_Ch1_IRQHandler()
+{
+	dma1Channel1.interruptHandler();
+}
+
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL1_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL2_CHANNEL3_COMBINED_INTERRUPT
+
+#if defined(CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL2_ENABLE) || defined(CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL3_ENABLE)
+
+/**
+ * \brief DMA1 Channel2 - Channel3 interrupt handler
+ */
+
+extern "C" void DMA_Ch2_3_IRQHandler()
+{
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL2_ENABLE
+	dma1Channel2.interruptHandler();
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL2_ENABLE
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL3_ENABLE
+	dma1Channel3.interruptHandler();
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL3_ENABLE
+}
+
+#endif	// defined(CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL2_ENABLE) || defined(CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL3_ENABLE)
+
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL2_CHANNEL3_COMBINED_INTERRUPT
+
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL4_CHANNEL5_CHANNEL6_CHANNEL7_COMBINED_INTERRUPT
+
+#if defined(CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL4_ENABLE) || defined(CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL5_ENABLE) || \
+		defined(CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL6_ENABLE) || defined(CCONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL6_ENABLE)
+
+/**
+ * \brief DMA1 Channel4 - Channel7 interrupt handler
+ */
+
+extern "C" void DMA_Ch4_5_6_7_IRQHandler()
+{
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL4_ENABLE
+	dma1Channel4.interruptHandler();
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL4_ENABLE
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL5_ENABLE
+	dma1Channel5.interruptHandler();
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL5_ENABLE
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL6_ENABLE
+	dma1Channel6.interruptHandler();
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL6_ENABLE
+#ifdef CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL7_ENABLE
+	dma1Channel7.interruptHandler();
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL7_ENABLE
+}
+
+#endif	// defined(CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL4_ENABLE) || defined(CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL5_ENABLE) ||
+		// defined(CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL6_ENABLE) || defined(CCONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL6_ENABLE)
+
+#endif	// def CONFIG_CHIP_STM32_DMAV1_DMA1_CHANNEL4_CHANNEL5_CHANNEL6_CHANNEL7_COMBINED_INTERRUPT
+
 }	// namespace chip
 
 }	// namespace distortos
