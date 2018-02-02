@@ -3,6 +3,7 @@
  * \brief ChipUartLowLevel class header for USARTv2 in STM32
  *
  * \author Copyright (C) 2016-2017 Kamil Szczygiel http://www.distortec.com http://www.freddiechopin.info
+ * \author Copyright (C) 2018 Cezary Gapinski cezary.gapinski@gmail.com
  *
  * \par License
  * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not
@@ -13,6 +14,11 @@
 #define SOURCE_CHIP_STM32_PERIPHERALS_USARTV2_INCLUDE_DISTORTOS_CHIP_CHIPUARTLOWLEVEL_HPP_
 
 #include "distortos/devices/communication/UartLowLevel.hpp"
+
+#include "distortos/devices/communication/UartBase.hpp"
+
+#include "distortos/chip/getBusFrequency.hpp"
+#include "distortos/chip/STM32-bit-banding.h"
 
 #include "distortos/distortosConfiguration.h"
 
@@ -42,7 +48,168 @@ public:
 	/// maximum allowed value for UART character length
 	constexpr static uint8_t maxCharacterLength {9};
 
-	class Parameters;
+/*---------------------------------------------------------------------------------------------------------------------+
+| public types
++---------------------------------------------------------------------------------------------------------------------*/
+
+	/// parameters for construction of UART low-level drivers
+	class Parameters
+	{
+	public:
+
+	#ifdef DISTORTOS_BITBANDING_SUPPORTED
+
+		/**
+		 * \brief Parameters's constructor
+		 *
+		 * \param [in] uartBase is a base address of UART peripheral
+		 * \param [in] rccEnBb is an address of bitband alias of appropriate U[S]ARTxEN bit in RCC register
+		 * \param [in] rccRstBb is an address of bitband alias of appropriate U[S]ARTxRST bit in RCC register
+		 */
+
+		constexpr Parameters(const uintptr_t uartBase, const uintptr_t rccEnBbAddress, const uintptr_t rccRstBbAddress) :
+				uartBase_{uartBase},
+				peripheralFrequency_{getBusFrequency(uartBase)},
+				rxneieBbAddress_{STM32_BITBAND_IMPLEMENTATION(uartBase, USART_TypeDef, CR1, USART_CR1_RXNEIE)},
+				tcieBbAddress_{STM32_BITBAND_IMPLEMENTATION(uartBase, USART_TypeDef, CR1, USART_CR1_TCIE)},
+				txeieBbAddress_{STM32_BITBAND_IMPLEMENTATION(uartBase, USART_TypeDef, CR1, USART_CR1_TXEIE)},
+				rccEnBbAddress_{rccEnBbAddress},
+				rccRstBbAddress_{rccRstBbAddress}
+		{
+
+		}
+
+	#else	// !def DISTORTOS_BITBANDING_SUPPORTED
+
+		/**
+		 * \brief Parameters's constructor
+		 *
+		 * \param [in] uartBase is a base address of UART peripheral
+		 * \param [in] rccEnOffset is the offset of RCC register with appropriate U[S]ARTxEN bit, bytes
+		 * \param [in] rccEnBitmask is the bitmask of appropriate U[S]ARTxEN bit in RCC register at \a rccEnOffset offset
+		 * \param [in] rccRstOffset is the offset of RCC register with appropriate U[S]ARTxRST bit, bytes
+		 * \param [in] rccRstBitmask is the bitmask of appropriate U[S]ARTxRST bit in RCC register at \a rccRstOffset offset
+		 */
+
+		constexpr Parameters(const uintptr_t uartBase, const size_t rccEnOffset, const uint32_t rccEnBitmask,
+				const size_t rccRstOffset, const uint32_t rccRstBitmask) :
+						uartBase_{uartBase},
+						peripheralFrequency_{getBusFrequency(uartBase)},
+						rccEnBitmask_{rccEnBitmask},
+						rccEnOffset_{rccEnOffset},
+						rccRstBitmask_{rccRstBitmask},
+						rccRstOffset_{rccRstOffset}
+		{
+
+		}
+
+	#endif	// !def DISTORTOS_BITBANDING_SUPPORTED
+
+		/**
+		 * \brief Enables or disables peripheral clock in RCC.
+		 *
+		 * \param [in] enable selects whether the clock will be enabled (true) or disabled (false)
+		 */
+
+		void enablePeripheralClock(const bool enable) const;
+
+		/**
+		 * \brief Enables or disables RXNE interrupt of UART.
+		 *
+		 * \param [in] enable selects whether the interrupt will be enabled (true) or disabled (false)
+		 */
+
+		void enableRxneInterrupt(const bool enable) const;
+
+		/**
+		 * \brief Enables or disables TC interrupt of UART.
+		 *
+		 * \param [in] enable selects whether the interrupt will be enabled (true) or disabled (false)
+		 */
+
+		void enableTcInterrupt(const bool enable) const;
+
+		/**
+		 * \brief Enables or disables TXE interrupt of UART.
+		 *
+		 * \param [in] enable selects whether the interrupt will be enabled (true) or disabled (false)
+		 */
+
+		void enableTxeInterrupt(const bool enable) const;
+
+		/**
+		 * \return character length, bits
+		 */
+
+		uint8_t getCharacterLength() const;
+
+		/**
+		 * \return peripheral clock frequency, Hz
+		 */
+
+		uint32_t getPeripheralFrequency() const
+		{
+			return peripheralFrequency_;
+		}
+
+		/**
+		 * \return reference to USART_TypeDef object
+		 */
+
+		USART_TypeDef& getUart() const
+		{
+			return *reinterpret_cast<USART_TypeDef*>(uartBase_);
+		}
+
+		/**
+		 * \brief Resets all peripheral's registers via RCC
+		 *
+		 * \note Peripheral clock must be enabled in RCC for this operation to work.
+		 */
+
+		void resetPeripheral() const;
+
+	private:
+
+		/// base address of UART peripheral
+		uintptr_t uartBase_;
+
+		/// peripheral clock frequency, Hz
+		uint32_t peripheralFrequency_;
+
+	#ifdef DISTORTOS_BITBANDING_SUPPORTED
+
+		/// address of bitband alias of RXNEIE bit in USART_CR1 register
+		uintptr_t rxneieBbAddress_;
+
+		/// address of bitband alias of TCIE bit in USART_CR1 register
+		uintptr_t tcieBbAddress_;
+
+		/// address of bitband alias of TXEIE bit in USART_CR1 register
+		uintptr_t txeieBbAddress_;
+
+		/// address of bitband alias of appropriate U[S]ARTxEN bit in RCC register
+		uintptr_t rccEnBbAddress_;
+
+		/// address of bitband alias of appropriate U[S]ARTxRST bit in RCC register
+		uintptr_t rccRstBbAddress_;
+
+	#else	// !def DISTORTOS_BITBANDING_SUPPORTED
+
+		/// bitmask of appropriate U[S]ARTxEN bit in RCC register at \a rccEnOffset_ offset
+		uint32_t rccEnBitmask_;
+
+		/// offset of RCC register with appropriate U[S]ARTxEN bit, bytes
+		size_t rccEnOffset_;
+
+		/// bitmask of appropriate U[S]ARTxRST bit in RCC register at \a rccRstOffset_ offset
+		uint32_t rccRstBitmask_;
+
+		/// offset of RCC register with appropriate U[S]ARTxRST bit, bytes
+		size_t rccRstOffset_;
+
+	#endif	// !def DISTORTOS_BITBANDING_SUPPORTED
+	};
 
 #ifdef CONFIG_CHIP_STM32_USARTV2_USART1_ENABLE
 
@@ -136,13 +303,7 @@ public:
 
 	constexpr explicit ChipUartLowLevel(const Parameters& parameters) :
 			parameters_{parameters},
-			uartBase_{},
-			readBuffer_{},
-			readSize_{},
-			readPosition_{},
-			writeBuffer_{},
-			writeSize_{},
-			writePosition_{}
+			uartBase_{}
 	{
 
 	}
@@ -154,14 +315,6 @@ public:
 	 */
 
 	~ChipUartLowLevel() override;
-
-	/**
-	 * \brief Interrupt handler
-	 *
-	 * \note this must not be called by user code
-	 */
-
-	void interruptHandler();
 
 	/**
 	 * \brief Starts low-level UART driver.
@@ -184,77 +337,7 @@ public:
 	std::pair<int, uint32_t> start(devices::UartBase& uartBase, uint32_t baudRate, uint8_t characterLength,
 			devices::UartParity parity, bool _2StopBits) override;
 
-	/**
-	 * \brief Starts asynchronous read operation.
-	 *
-	 * This function returns immediately. When the operation is finished (expected number of bytes were read),
-	 * UartBase::readCompleteEvent() will be executed. For any detected error during reception,
-	 * UartBase::receiveErrorEvent() will be executed. Note that overrun error may be reported even if it happened when
-	 * no read operation was in progress.
-	 *
-	 * \param [out] buffer is the buffer to which the data will be written
-	 * \param [in] size is the size of \a buffer, bytes, must be even if selected character length is greater than 8
-	 * bits
-	 *
-	 * \return 0 on success, error code otherwise:
-	 * - EBADF - the driver is not started;
-	 * - EBUSY - read is in progress;
-	 * - EINVAL - \a buffer and/or \a size are invalid;
-	 */
-
-	int startRead(void* buffer, size_t size) override;
-
-	/**
-	 * \brief Starts asynchronous write operation.
-	 *
-	 * This function returns immediately. If no transmission is active, UartBase::transmitStartEvent() will be executed.
-	 * When the operation is finished (expected number of bytes were written), UartBase::writeCompleteEvent() will be
-	 * executed. When the transmission physically ends, UartBase::transmitCompleteEvent() will be executed.
-	 *
-	 * \param [in] buffer is the buffer with data that will be transmitted
-	 * \param [in] size is the size of \a buffer, bytes, must be even if selected character length is greater than 8
-	 * bits
-	 *
-	 * \return 0 on success, error code otherwise:
-	 * - EBADF - the driver is not started;
-	 * - EBUSY - write is in progress;
-	 * - EINVAL - \a buffer and/or \a size are invalid;
-	 */
-
-	int startWrite(const void* buffer, size_t size) override;
-
-	/**
-	 * \brief Stops low-level UART driver.
-	 *
-	 * \return 0 on success, error code otherwise:
-	 * - EBADF - the driver is not started;
-	 * - EBUSY - read and/or write are in progress;
-	 */
-
-	int stop() override;
-
-	/**
-	 * \brief Stops asynchronous read operation.
-	 *
-	 * This function returns immediately. After this call UartBase::readCompleteEvent() will not be executed.
-	 *
-	 * \return number of bytes already read by low-level UART driver (and written to read buffer)
-	 */
-
-	size_t stopRead() override;
-
-	/**
-	 * \brief Stops asynchronous write operation.
-	 *
-	 * This function returns immediately. After this call UartBase::writeCompleteEvent() will not be executed.
-	 * UartBase::transmitCompleteEvent() will not be suppressed.
-	 *
-	 * \return number of bytes already written by low-level UART driver (and read from write buffer)
-	 */
-
-	size_t stopWrite() override;
-
-private:
+protected:
 
 	/**
 	 * \return true if driver is started, false otherwise
@@ -265,48 +348,22 @@ private:
 		return uartBase_ != nullptr;
 	}
 
-	/**
-	 * \return true if read operation is in progress, false otherwise
-	 */
-
-	bool isReadInProgress() const
-	{
-		return readBuffer_ != nullptr;
-	}
-
-	/**
-	 * \return true if write operation is in progress, false otherwise
-	 */
-
-	bool isWriteInProgress() const
-	{
-		return writeBuffer_ != nullptr;
-	}
-
 	/// reference to configuration parameters
 	const Parameters& parameters_;
 
 	/// pointer to UartBase object associated with this one
 	devices::UartBase* uartBase_;
-
-	/// buffer to which the data is being written
-	uint8_t* volatile readBuffer_;
-
-	/// size of \a readBuffer_, bytes
-	volatile size_t readSize_;
-
-	/// current position in \a readBuffer_
-	volatile size_t readPosition_;
-
-	/// buffer with data that is being transmitted
-	const uint8_t* volatile writeBuffer_;
-
-	/// size of \a writeBuffer_, bytes
-	volatile size_t writeSize_;
-
-	/// current position in \a writeBuffer_
-	volatile size_t writePosition_;
 };
+
+/**
+ * \brief Decode value of USART_ISR register to devices::UartBase::ErrorSet
+ *
+ * \param [in] isr is the value of USART_ISR register that will be decoded
+ *
+ * \return devices::UartBase::ErrorSet with errors decoded from \a isr
+ */
+
+devices::UartBase::ErrorSet decodeErrors(const uint32_t isr);
 
 }	// namespace chip
 

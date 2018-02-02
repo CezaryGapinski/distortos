@@ -3,6 +3,7 @@
  * \brief Declarations of low-level UART drivers for USARTv2 in STM32
  *
  * \author Copyright (C) 2016-2017 Kamil Szczygiel http://www.distortec.com http://www.freddiechopin.info
+ * \author Copyright (C) 2018 Cezary Gapinski cezary.gapinski@gmail.com
  *
  * \par License
  * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not
@@ -20,7 +21,7 @@ namespace distortos
 namespace chip
 {
 
-class ChipUartLowLevel;
+class ChipUartInterruptLowLevel;
 
 /*---------------------------------------------------------------------------------------------------------------------+
 | global objects
@@ -29,84 +30,84 @@ class ChipUartLowLevel;
 #ifdef CONFIG_CHIP_STM32_USARTV2_USART1_ENABLE
 
 /// UART low-level driver for USART1
-extern ChipUartLowLevel usart1;
+extern ChipUartInterruptLowLevel usart1;
 
 #endif	// def CONFIG_CHIP_STM32_USARTV2_USART1_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV2_USART2_ENABLE
 
 /// UART low-level driver for USART2
-extern ChipUartLowLevel usart2;
+extern ChipUartInterruptLowLevel usart2;
 
 #endif	// def CONFIG_CHIP_STM32_USARTV2_USART2_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV2_USART3_ENABLE
 
 /// UART low-level driver for USART3
-extern ChipUartLowLevel usart3;
+extern ChipUartInterruptLowLevel usart3;
 
 #endif	// def CONFIG_CHIP_STM32_USARTV2_USART3_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV2_UART4_ENABLE
 
 /// UART low-level driver for UART4
-extern ChipUartLowLevel uart4;
+extern ChipUartInterruptLowLevel uart4;
 
 #endif	// def CONFIG_CHIP_STM32_USARTV2_UART4_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV2_USART4_ENABLE
 
 /// UART low-level driver for USART4
-extern ChipUartLowLevel usart4;
+extern ChipUartInterruptLowLevel usart4;
 
 #endif	// def CONFIG_CHIP_STM32_USARTV2_USART4_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV2_UART5_ENABLE
 
 /// UART low-level driver for UART5
-extern ChipUartLowLevel uart5;
+extern ChipUartInterruptLowLevel uart5;
 
 #endif	// def CONFIG_CHIP_STM32_USARTV2_UART5_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV2_USART5_ENABLE
 
 /// UART low-level driver for USART5
-extern ChipUartLowLevel usart5;
+extern ChipUartInterruptLowLevel usart5;
 
 #endif	// def CONFIG_CHIP_STM32_USARTV2_USART5_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV2_USART6_ENABLE
 
 /// UART low-level driver for USART6
-extern ChipUartLowLevel usart6;
+extern ChipUartInterruptLowLevel usart6;
 
 #endif	// def CONFIG_CHIP_STM32_USARTV2_USART6_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV2_UART7_ENABLE
 
 /// UART low-level driver for UART7
-extern ChipUartLowLevel uart7;
+extern ChipUartInterruptLowLevel uart7;
 
 #endif	// def CONFIG_CHIP_STM32_USARTV2_UART7_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV2_USART7_ENABLE
 
 /// UART low-level driver for USART7
-extern ChipUartLowLevel usart7;
+extern ChipUartInterruptLowLevel usart7;
 
 #endif	// def CONFIG_CHIP_STM32_USARTV2_USART7_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV2_UART8_ENABLE
 
 /// UART low-level driver for UART8
-extern ChipUartLowLevel uart8;
+extern ChipUartInterruptLowLevel uart8;
 
 #endif	// def CONFIG_CHIP_STM32_USARTV2_UART8_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV2_USART8_ENABLE
 
 /// UART low-level driver for USART8
-extern ChipUartLowLevel usart8;
+extern ChipUartInterruptLowLevel usart8;
 
 #endif	// def CONFIG_CHIP_STM32_USARTV2_USART8_ENABLE
 
