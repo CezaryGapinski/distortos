@@ -42,6 +42,10 @@ public:
 		overrunError,
 		/// parity error
 		parityError,
+		/// transmit DMA error
+		transmitDmaError,
+		/// receive DMA error
+		receiveDmaError,
 
 		/// number of supported error bits - must be last!
 		errorBitsMax
