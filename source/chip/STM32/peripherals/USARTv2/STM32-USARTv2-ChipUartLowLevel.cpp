@@ -192,6 +192,61 @@ void ChipUartLowLevel::Parameters::enableTxeInterrupt(const bool enable) const
 #endif	// !def DISTORTOS_BITBANDING_SUPPORTED
 }
 
+void ChipUartLowLevel::Parameters::enablePeInterrupt(const bool enable) const
+{
+#ifdef DISTORTOS_BITBANDING_SUPPORTED
+	*reinterpret_cast<volatile unsigned long*>(peieBbAddress_) = enable;
+#else	// !def DISTORTOS_BITBANDING_SUPPORTED
+	auto& uart = getUart();
+	const InterruptMaskingLock interruptMaskingLock;
+	uart.CR1 = (uart.CR1 & ~USART_CR1_PEIE) | (enable == true ? USART_CR1_PEIE : 0);
+#endif	// !def DISTORTOS_BITBANDING_SUPPORTED
+}
+
+void ChipUartLowLevel::Parameters::enableEInterrupt(const bool enable) const
+{
+#ifdef DISTORTOS_BITBANDING_SUPPORTED
+	*reinterpret_cast<volatile unsigned long*>(eieBbAddress_) = enable;
+#else	// !def DISTORTOS_BITBANDING_SUPPORTED
+	auto& uart = getUart();
+	const InterruptMaskingLock interruptMaskingLock;
+	uart.CR3 = (uart.CR3 & ~USART_CR3_EIE) | (enable == true ? USART_CR3_EIE : 0);
+#endif	// !def DISTORTOS_BITBANDING_SUPPORTED
+}
+
+void ChipUartLowLevel::Parameters::disableDmaOnReceptionError(const bool enable) const
+{
+#ifdef DISTORTOS_BITBANDING_SUPPORTED
+	*reinterpret_cast<volatile unsigned long*>(ddreBbAddress_) = enable;
+#else	// !def DISTORTOS_BITBANDING_SUPPORTED
+	auto& uart = getUart();
+	const InterruptMaskingLock interruptMaskingLock;
+	uart.CR3 = (uart.CR3 & ~USART_CR3_DDRE) | (enable == true ? USART_CR3_DDRE : 0);
+#endif	// !def DISTORTOS_BITBANDING_SUPPORTED
+}
+
+void ChipUartLowLevel::Parameters::enableDmaTransmiter(const bool enable) const
+{
+#ifdef DISTORTOS_BITBANDING_SUPPORTED
+	*reinterpret_cast<volatile unsigned long*>(dmatBbAddress_) = enable;
+#else	// !def DISTORTOS_BITBANDING_SUPPORTED
+	auto& uart = getUart();
+	const InterruptMaskingLock interruptMaskingLock;
+	uart.CR3 = (uart.CR3 & ~USART_CR3_DMAT) | (enable == true ? USART_CR3_DMAT : 0);
+#endif	// !def DISTORTOS_BITBANDING_SUPPORT
+}
+
+void ChipUartLowLevel::Parameters::enableDmaReceiver(const bool enable) const
+{
+#ifdef DISTORTOS_BITBANDING_SUPPORTED
+	*reinterpret_cast<volatile unsigned long*>(dmarBbAddress_) = enable;
+#else	// !def DISTORTOS_BITBANDING_SUPPORTED
+	auto& uart = getUart();
+	const InterruptMaskingLock interruptMaskingLock;
+	uart.CR3 = (uart.CR3 & ~USART_CR3_DMAR) | (enable == true ? USART_CR3_DMAR : 0);
+#endif	// !def DISTORTOS_BITBANDING_SUPPORT
+}
+
 uint8_t ChipUartLowLevel::Parameters::getCharacterLength() const
 {
 	const auto cr1 = getUart().CR1;
@@ -203,6 +258,17 @@ uint8_t ChipUartLowLevel::Parameters::getCharacterLength() const
 	const auto parityControlEnabled = (cr1 & USART_CR1_PCE) != 0;
 	return realCharacterLength - parityControlEnabled;
 }
+
+bool ChipUartLowLevel::Parameters::isDmaTrasmitterEnabled() const
+{
+	return getUart().CR3 & USART_CR3_DMAT;
+}
+
+bool ChipUartLowLevel::Parameters::isDmaReceiverEnabled() const
+{
+	return getUart().CR3 & USART_CR3_DMAR;
+}
+
 
 ChipUartLowLevel::~ChipUartLowLevel()
 {
