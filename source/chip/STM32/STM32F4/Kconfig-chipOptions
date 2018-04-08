@@ -2,6 +2,7 @@
 # file: Kconfig-chipOptions
 #
 # author: Copyright (C) 2015-2017 Kamil Szczygiel http://www.distortec.com http://www.freddiechopin.info
+# author: Copyright (C) 2018 Cezary Gapinski cezary.gapinski@gmail.com
 #
 # This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not
 # distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -2350,6 +2351,6 @@ config CHIP
 
 config CHIP_INCLUDES
 	string
-	default "source/chip/STM32/include source/chip/STM32/STM32F4/include source/chip/STM32/peripherals/GPIOv2/include source/chip/STM32/peripherals/SPIv1/include source/chip/STM32/peripherals/USARTv1/include source/chip/STM32/STM32F4/external/CMSIS-STM32F4"
+	default "source/chip/STM32/include source/chip/STM32/STM32F4/include source/chip/STM32/peripherals/GPIOv2/include source/chip/STM32/peripherals/SPIv1/include source/chip/STM32/peripherals/USARTv1/include source/chip/STM32/peripherals/DMAv2/include source/chip/STM32/STM32F4/external/CMSIS-STM32F4"
 
 endif	# CHIP_STM32F4
