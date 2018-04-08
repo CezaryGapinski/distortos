@@ -129,6 +129,118 @@ public:
 
 	class Parameters;
 
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM0_ENABLE
+
+	/// parameters for construction of DMA low-level driver for DMA1 Stream0
+	static const Parameters dma1Stream0Parameters;
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM0_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM1_ENABLE
+
+	/// parameters for construction of DMA low-level driver for DMA1 Stream1
+	static const Parameters dma1Stream1Parameters;
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM1_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM2_ENABLE
+
+	/// parameters for construction of DMA low-level driver for DMA1 Stream2
+	static const Parameters dma1Stream2Parameters;
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM2_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM3_ENABLE
+
+	/// parameters for construction of DMA low-level driver for DMA1 Stream3
+	static const Parameters dma1Stream3Parameters;
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM3_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM4_ENABLE
+
+	/// parameters for construction of DMA low-level driver for DMA1 Stream4
+	static const Parameters dma1Stream4Parameters;
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM4_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM5_ENABLE
+
+	/// parameters for construction of DMA low-level driver for DMA1 Stream5
+	static const Parameters dma1Stream5Parameters;
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM5_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM6_ENABLE
+
+	/// parameters for construction of DMA low-level driver for DMA1 Stream6
+	static const Parameters dma1Stream6Parameters;
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM6_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM7_ENABLE
+
+	/// parameters for construction of DMA low-level driver for DMA1 Stream7
+	static const Parameters dma1Stream7Parameters;
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM7_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM0_ENABLE
+
+	/// parameters for construction of DMA low-level driver for DMA2 Stream0
+	static const Parameters dma2Stream0Parameters;
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM0_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM1_ENABLE
+
+	/// parameters for construction of DMA low-level driver for DMA2 Stream1
+	static const Parameters dma2Stream1Parameters;
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM1_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM2_ENABLE
+
+	/// parameters for construction of DMA low-level driver for DMA2 Stream2
+	static const Parameters dma2Stream2Parameters;
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM2_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM3_ENABLE
+
+	/// parameters for construction of DMA low-level driver for DMA2 Stream3
+	static const Parameters dma2Stream3Parameters;
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM3_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM4_ENABLE
+
+	/// parameters for construction of DMA low-level driver for DMA2 Stream4
+	static const Parameters dma2Stream4Parameters;
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM4_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM5_ENABLE
+
+	/// parameters for construction of DMA low-level driver for DMA2 Stream5
+	static const Parameters dma2Stream5Parameters;
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM5_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM6_ENABLE
+
+	/// parameters for construction of DMA low-level driver for DMA2 Stream6
+	static const Parameters dma2Stream6Parameters;
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM6_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM7_ENABLE
+
+	/// parameters for construction of DMA low-level driver for DMA2 Stream7
+	static const Parameters dma2Stream7Parameters;
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM7_ENABLE
+
 	/**
 	 * \brief ChipDmaLowLevel's constructor
 	 *

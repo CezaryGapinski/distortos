@@ -352,6 +352,122 @@ private:
 };
 
 /*---------------------------------------------------------------------------------------------------------------------+
+| public static objects
++---------------------------------------------------------------------------------------------------------------------*/
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM0_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma1Stream0Parameters {DMA1_BASE, DMA1_Stream0_BASE,
+		offsetof(DMA_TypeDef, LISR), offsetof(DMA_TypeDef, LIFCR), DMA_INT_REG_SHIFT_STREAM0};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM0_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM1_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma1Stream1Parameters {DMA1_BASE, DMA1_Stream1_BASE,
+		offsetof(DMA_TypeDef, LISR), offsetof(DMA_TypeDef, LIFCR), DMA_INT_REG_SHIFT_STREAM1};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM1_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM2_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma1Stream2Parameters {DMA1_BASE, DMA1_Stream2_BASE,
+		offsetof(DMA_TypeDef, LISR), offsetof(DMA_TypeDef, LIFCR), DMA_INT_REG_SHIFT_STREAM2};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM2_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM3_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma1Stream3Parameters {DMA1_BASE, DMA1_Stream3_BASE,
+		offsetof(DMA_TypeDef, LISR), offsetof(DMA_TypeDef, LIFCR), DMA_INT_REG_SHIFT_STREAM3};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM3_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM4_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma1Stream4Parameters {DMA1_BASE, DMA1_Stream4_BASE,
+		offsetof(DMA_TypeDef, HISR), offsetof(DMA_TypeDef, HIFCR), DMA_INT_REG_SHIFT_STREAM4};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM4_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM5_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma1Stream5Parameters {DMA1_BASE, DMA1_Stream5_BASE,
+		offsetof(DMA_TypeDef, HISR), offsetof(DMA_TypeDef, HIFCR), DMA_INT_REG_SHIFT_STREAM5};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM5_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM6_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma1Stream6Parameters {DMA1_BASE, DMA1_Stream6_BASE,
+		offsetof(DMA_TypeDef, HISR), offsetof(DMA_TypeDef, HIFCR), DMA_INT_REG_SHIFT_STREAM6};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM6_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM7_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma1Stream7Parameters {DMA1_BASE, DMA1_Stream7_BASE,
+		offsetof(DMA_TypeDef, HISR), offsetof(DMA_TypeDef, HIFCR), DMA_INT_REG_SHIFT_STREAM7};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM7_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM0_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma2Stream0Parameters {DMA2_BASE, DMA2_Stream0_BASE,
+		offsetof(DMA_TypeDef, LISR), offsetof(DMA_TypeDef, LIFCR), DMA_INT_REG_SHIFT_STREAM0};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM0_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM1_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma2Stream1Parameters {DMA2_BASE, DMA2_Stream1_BASE,
+		offsetof(DMA_TypeDef, LISR), offsetof(DMA_TypeDef, LIFCR), DMA_INT_REG_SHIFT_STREAM1};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM1_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM2_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma2Stream2Parameters {DMA2_BASE, DMA2_Stream2_BASE,
+		offsetof(DMA_TypeDef, LISR), offsetof(DMA_TypeDef, LIFCR), DMA_INT_REG_SHIFT_STREAM2};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM2_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM3_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma2Stream3Parameters {DMA2_BASE, DMA2_Stream3_BASE,
+		offsetof(DMA_TypeDef, LISR), offsetof(DMA_TypeDef, LIFCR), DMA_INT_REG_SHIFT_STREAM3};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM3_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM4_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma2Stream4Parameters {DMA2_BASE, DMA2_Stream4_BASE,
+		offsetof(DMA_TypeDef, HISR), offsetof(DMA_TypeDef, HIFCR), DMA_INT_REG_SHIFT_STREAM4};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM4_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM5_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma2Stream5Parameters {DMA2_BASE, DMA2_Stream5_BASE,
+		offsetof(DMA_TypeDef, HISR), offsetof(DMA_TypeDef, HIFCR), DMA_INT_REG_SHIFT_STREAM5};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM5_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM6_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma2Stream6Parameters {DMA2_BASE, DMA2_Stream6_BASE,
+		offsetof(DMA_TypeDef, HISR), offsetof(DMA_TypeDef, HIFCR), DMA_INT_REG_SHIFT_STREAM6};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM6_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM7_ENABLE
+
+const ChipDmaLowLevel::Parameters ChipDmaLowLevel::dma2Stream7Parameters {DMA2_BASE, DMA2_Stream7_BASE,
+		offsetof(DMA_TypeDef, HISR), offsetof(DMA_TypeDef, HIFCR), DMA_INT_REG_SHIFT_STREAM7};
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM7_ENABLE
+
+/*---------------------------------------------------------------------------------------------------------------------+
 | public functions
 +---------------------------------------------------------------------------------------------------------------------*/
 
