@@ -117,6 +117,218 @@ ChipDmaLowLevel dma2Stream7 {ChipDmaLowLevel::dma2Stream7Parameters};
 
 #endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM7_ENABLE
 
+/*---------------------------------------------------------------------------------------------------------------------+
+| global functions
++---------------------------------------------------------------------------------------------------------------------*/
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM0_ENABLE
+
+/**
+ * \brief DMA1 Stream 0 interrupt handler
+ */
+
+extern "C" void DMA1_Stream0_IRQHandler()
+{
+	dma1Stream0.interruptHandler();
+}
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM0_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM1_ENABLE
+
+/**
+ * \brief DMA1 Stream 1 interrupt handler
+ */
+
+extern "C" void DMA1_Stream1_IRQHandler()
+{
+	dma1Stream1.interruptHandler();
+}
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM1_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM2_ENABLE
+
+/**
+ * \brief DMA1 Stream 2 interrupt handler
+ */
+
+extern "C" void DMA1_Stream2_IRQHandler()
+{
+	dma1Stream2.interruptHandler();
+}
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM2_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM3_ENABLE
+
+/**
+ * \brief DMA1 Stream 3 interrupt handler
+ */
+
+extern "C" void DMA1_Stream3_IRQHandler()
+{
+	dma1Stream3.interruptHandler();
+}
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM3_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM4_ENABLE
+
+/**
+ * \brief DMA1 Stream 4 interrupt handler
+ */
+
+extern "C" void DMA1_Stream4_IRQHandler()
+{
+	dma1Stream4.interruptHandler();
+}
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM4_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM5_ENABLE
+
+/**
+ * \brief DMA1 Stream 5 interrupt handler
+ */
+
+extern "C" void DMA1_Stream5_IRQHandler()
+{
+	dma1Stream5.interruptHandler();
+}
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM5_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM6_ENABLE
+
+/**
+ * \brief DMA1 Stream 6 interrupt handler
+ */
+
+extern "C" void DMA1_Stream6_IRQHandler()
+{
+	dma1Stream6.interruptHandler();
+}
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM6_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM7_ENABLE
+
+/**
+ * \brief DMA1 Stream 7 interrupt handler
+ */
+
+extern "C" void DMA1_Stream7_IRQHandler()
+{
+	dma1Stream7.interruptHandler();
+}
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA1_STREAM7_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM0_ENABLE
+
+/**
+ * \brief DMA2 Stream 0 interrupt handler
+ */
+
+extern "C" void DMA2_Stream0_IRQHandler()
+{
+	dma2Stream0.interruptHandler();
+}
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM0_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM1_ENABLE
+
+/**
+ * \brief DMA2 Stream 1 interrupt handler
+ */
+
+extern "C" void DMA2_Stream1_IRQHandler()
+{
+	dma2Stream1.interruptHandler();
+}
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM1_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM2_ENABLE
+
+/**
+ * \brief DMA2 Stream 2 interrupt handler
+ */
+
+extern "C" void DMA2_Stream2_IRQHandler()
+{
+	dma2Stream2.interruptHandler();
+}
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM2_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM3_ENABLE
+
+/**
+ * \brief DMA2 Stream 3 interrupt handler
+ */
+
+extern "C" void DMA2_Stream3_IRQHandler()
+{
+	dma2Stream3.interruptHandler();
+}
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM3_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM4_ENABLE
+
+/**
+ * \brief DMA2 Stream 4 interrupt handler
+ */
+
+extern "C" void DMA2_Stream4_IRQHandler()
+{
+	dma2Stream4.interruptHandler();
+}
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM4_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM5_ENABLE
+
+/**
+ * \brief DMA2 Stream 5 interrupt handler
+ */
+
+extern "C" void DMA2_Stream5_IRQHandler()
+{
+	dma2Stream5.interruptHandler();
+}
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM5_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM6_ENABLE
+
+/**
+ * \brief DMA2 Stream 6 interrupt handler
+ */
+
+extern "C" void DMA2_Stream6_IRQHandler()
+{
+	dma2Stream6.interruptHandler();
+}
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM6_ENABLE
+
+#ifdef CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM7_ENABLE
+
+/**
+ * \brief DMA2 Stream 7 interrupt handler
+ */
+
+extern "C" void DMA2_Stream7_IRQHandler()
+{
+	dma2Stream7.interruptHandler();
+}
+
+#endif	// def CONFIG_CHIP_STM32_DMAV2_DMA2_STREAM7_ENABLE
+
 }	// namespace chip
 
 }	// namespace distortos
