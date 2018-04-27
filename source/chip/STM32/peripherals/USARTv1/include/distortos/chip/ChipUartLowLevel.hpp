@@ -67,6 +67,10 @@ public:
 				rxneieBbAddress_{STM32_BITBAND_IMPLEMENTATION(uartBase, USART_TypeDef, CR1, USART_CR1_RXNEIE)},
 				tcieBbAddress_{STM32_BITBAND_IMPLEMENTATION(uartBase, USART_TypeDef, CR1, USART_CR1_TCIE)},
 				txeieBbAddress_{STM32_BITBAND_IMPLEMENTATION(uartBase, USART_TypeDef, CR1, USART_CR1_TXEIE)},
+				peieBbAddress_{STM32_BITBAND_IMPLEMENTATION(uartBase, USART_TypeDef, CR1, USART_CR1_PEIE)},
+				eieBbAddress_{STM32_BITBAND_IMPLEMENTATION(uartBase, USART_TypeDef, CR3, USART_CR3_EIE)},
+				dmatBbAddress_{STM32_BITBAND_IMPLEMENTATION(uartBase, USART_TypeDef, CR3, USART_CR3_DMAT)},
+				dmarBbAddress_{STM32_BITBAND_IMPLEMENTATION(uartBase, USART_TypeDef, CR3, USART_CR3_DMAR)},
 				rccEnBbAddress_{rccEnBbAddress},
 				rccRstBbAddress_{rccRstBbAddress}
 		{
@@ -118,6 +122,50 @@ public:
 		}
 
 		/**
+		 * \brief Enables or disables PE interrupt of UART.
+		 *
+		 * \param [in] enable selects whether the interrupt will be enabled (true) or disabled (false)
+		 */
+
+		void enablePeInterrupt(const bool enable) const
+		{
+			*reinterpret_cast<volatile unsigned long*>(peieBbAddress_) = enable;
+		}
+
+		/**
+		 * \brief Enables or disables EI of UART.
+		 *
+		 * \param [in] enable selects whether the interrupt will be enabled (true) or disabled (false)
+		 */
+
+		void enableEInterrupt(const bool enable) const
+		{
+			*reinterpret_cast<volatile unsigned long*>(eieBbAddress_) = enable;
+		}
+
+		/**
+		 * \brief Enables or disables DMA transmitter of UART.
+		 *
+		 * \param [in] enable selects whether the DMA transmitter will be enabled (true) or not disabled (false)
+		 */
+
+		void enableDmaTransmiter(const bool enable) const
+		{
+			*reinterpret_cast<volatile unsigned long*>(dmatBbAddress_) = enable;
+		}
+
+		/**
+		 * \brief Enables or disables DMA receiver of UART.
+		 *
+		 * \param [in] enable selects whether the DMA receiver will be enabled (true) or not disabled (false)
+		 */
+
+		void enableDmaReceiver(const bool enable) const
+		{
+			*reinterpret_cast<volatile unsigned long*>(dmarBbAddress_) = enable;
+		}
+
+		/**
 		 * \return character length, bits
 		 */
 
@@ -139,6 +187,24 @@ public:
 		USART_TypeDef& getUart() const
 		{
 			return *reinterpret_cast<USART_TypeDef*>(uartBase_);
+		}
+
+		/**
+		 * \return DMA transmitter enable status
+		 */
+
+		bool isDmaTrasmitterEnabled() const
+		{
+			return *reinterpret_cast<volatile unsigned long*>(dmatBbAddress_) == true;
+		}
+
+		/**
+		 * \return DMA transmitter enable status
+		 */
+
+		bool isDmaReceiverEnabled() const
+		{
+			return *reinterpret_cast<volatile unsigned long*>(dmarBbAddress_) == true;
 		}
 
 		/**
@@ -169,6 +235,18 @@ public:
 
 		/// address of bitband alias of TXEIE bit in USART_CR1 register
 		uintptr_t txeieBbAddress_;
+
+		/// address of bitband alias of PEIE bit in USART_CR1 register
+		uintptr_t peieBbAddress_;
+
+		/// address of bitband alias of EIE bit in USART_CR3 register
+		uintptr_t eieBbAddress_;
+
+		/// address of bitband alias of DMAT bit in USART_CR3 register
+		uintptr_t dmatBbAddress_;
+
+		/// address of bitband alias of DMAR bit in USART_CR3 register
+		uintptr_t dmarBbAddress_;
 
 		/// address of bitband alias of appropriate U[S]ARTxEN bit in RCC register
 		uintptr_t rccEnBbAddress_;
