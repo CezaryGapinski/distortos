@@ -531,6 +531,399 @@ endchoice
 
 endmenu
 
+menu "DMA Streams mapping"
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM0_ENABLE || CHIP_STM32_DMAV2_DMA1_STREAM1_ENABLE || \
+		CHIP_STM32_DMAV2_DMA1_STREAM2_ENABLE || CHIP_STM32_DMAV2_DMA1_STREAM3_ENABLE || \
+		CHIP_STM32_DMAV2_DMA1_STREAM4_ENABLE || CHIP_STM32_DMAV2_DMA1_STREAM5_ENABLE || \
+		CHIP_STM32_DMAV2_DMA1_STREAM6_ENABLE || CHIP_STM32_DMAV2_DMA1_STREAM7_ENABLE || \
+		CHIP_STM32_DMAV2_DMA2_STREAM0_ENABLE || CHIP_STM32_DMAV2_DMA2_STREAM1_ENABLE || \
+		CHIP_STM32_DMAV2_DMA2_STREAM2_ENABLE || CHIP_STM32_DMAV2_DMA2_STREAM3_ENABLE || \
+		CHIP_STM32_DMAV2_DMA2_STREAM5_ENABLE || CHIP_STM32_DMAV2_DMA2_STREAM6_ENABLE || \
+		CHIP_STM32_DMAV2_DMA2_STREAM7_ENABLE
+
+config CHIP_STM32_DMAV2_DMA1_STREAM0_MAPPING_ENABLE
+	bool "DMA1 Stream0 mapping"
+	default n
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM0_ENABLE
+	help
+		Mapping DMA1 Stream0 to specified peripheral.
+
+choice
+	prompt "DMA1 Stream0 choice"
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM0_MAPPING_ENABLE
+	help
+		DMA1 Stream0 choice:
+		- Uart5 RX connected to DMA1 Stream0,
+		- Uart8 TX connected to DMA1 Stream0.
+
+config CHIP_STM32F4_DMA1_STREAM0_UART5_RX
+	bool "Uart5 RX"
+	help
+		DMA1 Stream0 = Uart5 RX
+
+config CHIP_STM32F4_DMA1_STREAM0_UART8_TX
+	bool "Uart8 TX"
+	help
+		DMA1 Stream0 = Uart8 TX
+
+endchoice
+
+config CHIP_STM32_DMAV2_DMA1_STREAM1_MAPPING_ENABLE
+	bool "DMA1 Stream1 mapping"
+	default n
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM1_ENABLE
+	help
+		Mapping DMA1 Stream1 to specified peripheral.
+
+choice
+	prompt "DMA1 Stream1 choice"
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM1_MAPPING_ENABLE
+	help
+		DMA1 Stream1 choice:
+		- Usart3 RX connected to DMA1 Stream1,
+		- Uart7 TX connected to DMA1 Stream1.
+
+config CHIP_STM32F4_DMA1_STREAM1_USART3_RX
+	bool "Usart3 RX"
+	help
+		DMA1 Stream1 = Usart3 RX
+
+config CHIP_STM32F4_DMA1_STREAM1_UART7_TX
+	bool "Uart7 TX"
+	help
+		DMA1 Stream1 = Uart7 TX
+
+endchoice
+
+config CHIP_STM32_DMAV2_DMA1_STREAM2_MAPPING_ENABLE
+	bool "DMA1 Stream2 mapping"
+	default n
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM2_ENABLE
+	help
+		Mapping DMA1 Stream2 to specified peripheral.
+
+choice
+	prompt "DMA1 Stream2 choice"
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM2_MAPPING_ENABLE
+	help
+		DMA1 Stream2 choice:
+		- Uart4 RX connected to DMA1 Stream2.
+
+config CHIP_STM32F4_DMA1_STREAM2_UART4_RX
+	bool "Uart4 RX"
+	help
+		DMA1 Stream2 = Uart4 RX
+
+endchoice
+
+config CHIP_STM32_DMAV2_DMA1_STREAM3_MAPPING_ENABLE
+	bool "DMA1 Stream3 mapping"
+	default n
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM3_ENABLE
+	help
+		Mapping DMA1 Stream3 to specified peripheral.
+
+choice
+	prompt "DMA1 Stream3 choice"
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM3_MAPPING_ENABLE
+	help
+		DMA1 Stream3 choice:
+		- Usart3 TX connected to DMA1 Stream3,
+		- Uart7 RX connected to DMA1 Stream3.
+
+config CHIP_STM32F4_DMA1_STREAM3_USART3_TX
+	bool "Usart3 TX"
+	help
+		DMA1 Stream3 = Usart3 TX
+
+config CHIP_STM32F4_DMA1_STREAM3_UART7_RX
+	bool "Uart7 RX"
+	help
+		DMA1 Stream3 = Uart7 RX
+
+endchoice
+
+config CHIP_STM32_DMAV2_DMA1_STREAM4_MAPPING_ENABLE
+	bool "DMA1 Stream4 mapping"
+	default n
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM4_ENABLE
+	help
+		Mapping DMA1 Stream4 to specified peripheral.
+
+choice
+	prompt "DMA1 Stream4 choice"
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM4_MAPPING_ENABLE
+	help
+		DMA1 Stream4 choice:
+		- Uart4 TX connected to DMA1 Stream4,
+		- Usart3 TX connected to DMA1 Stream4.
+
+config CHIP_STM32F4_DMA1_STREAM4_UART4_TX
+	bool "Uart4 TX"
+	help
+		DMA1 Stream4 = Uart4 TX
+
+config CHIP_STM32F4_DMA1_STREAM4_USART3_TX
+	bool "Usart3 TX"
+	help
+		DMA1 Stream4 = Usart3 TX
+
+endchoice
+
+config CHIP_STM32_DMAV2_DMA1_STREAM5_MAPPING_ENABLE
+	bool "DMA1 Stream5 mapping"
+	default n
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM5_ENABLE
+	help
+		Mapping DMA1 Stream5 to specified peripheral.
+
+choice
+	prompt "DMA1 Stream5 choice"
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM5_MAPPING_ENABLE
+	help
+		DMA1 Stream5 choice:
+		- Usart2 RX connected to DMA1 Stream5.
+
+config CHIP_STM32F4_DMA1_STREAM5_USART2_RX
+	bool "Usart2 RX"
+	help
+		DMA1 Stream5 = Usart2 RX
+
+endchoice
+
+config CHIP_STM32_DMAV2_DMA1_STREAM6_MAPPING_ENABLE
+	bool "DMA1 Stream6 mapping"
+	default n
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM6_ENABLE
+	help
+		Mapping DMA1 Stream6 to specified peripheral.
+
+choice
+	prompt "DMA1 Stream6 choice"
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM6_MAPPING_ENABLE
+	help
+		DMA1 Stream6 choice:
+		- Usart2 TX connected to DMA1 Stream6,
+		- Uart8 RX connected to DMA1 Stream6.
+
+config CHIP_STM32F4_DMA1_STREAM6_USART2_TX
+	bool "Usart2 TX"
+	help
+		DMA1 Stream6 = Usart2 TX
+
+config CHIP_STM32F4_DMA1_STREAM6_UART8_RX
+	bool "Uart8 RX"
+	help
+		DMA1 Stream6 = Uart8 RX
+
+endchoice
+
+config CHIP_STM32_DMAV2_DMA1_STREAM7_MAPPING_ENABLE
+	bool "DMA1 Stream7 mapping"
+	default n
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM7_ENABLE
+	help
+		Mapping DMA1 Stream7 to specified peripheral.
+
+choice 
+	prompt "DMA1 Stream7 choice"
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM7_MAPPING_ENABLE
+	help
+		DMA1 Stream7 choice:
+		- Uart5 TX connected to DMA1 Stream7.
+
+config CHIP_STM32F4_DMA1_STREAM7_UART5_TX
+	bool "Uart5 TX"
+	help
+		DMA1 Stream7 = Uart5 TX
+
+endchoice
+
+config CHIP_STM32_DMAV2_DMA2_STREAM0_MAPPING_ENABLE
+	bool "DMA2 Stream0 mapping"
+	default n
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM0_ENABLE
+	help
+		Mapping DMA2 Stream0 to specified peripheral.
+
+choice
+	prompt "DMA2 Stream0 choice"
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM0_MAPPING_ENABLE
+	help
+		DMA2 Stream0 choice:
+		- Uart9 TX connected to DMA2 Stream0,
+		- Uart10 RX connected to DMA2 Stream0.
+
+config CHIP_STM32F4_DMA2_STREAM0_UART9_TX
+	bool "Uart9 TX"
+	help
+		DMA2 Stream0 = Uart9 TX
+
+config CHIP_STM32F4_DMA2_STREAM0_UART10_RX
+	bool "Uart10 RX"
+	help
+		DMA2 Stream0 = Uart10 RX
+
+endchoice
+
+config CHIP_STM32_DMAV2_DMA2_STREAM1_MAPPING_ENABLE
+	bool "DMA2 Stream1 mapping"
+	default n
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM1_ENABLE
+	help
+		Mapping DMA2 Stream1 to specified peripheral.
+
+choice
+	prompt "DMA2 Stream1 choice"
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM1_MAPPING_ENABLE
+	help
+		DMA2 Stream1 choice:
+		- Usart6 RX connected to DMA2 Stream1.
+
+config CHIP_STM32F4_DMA2_STREAM1_USART6_RX
+	bool "Usart6 RX"
+	help
+		DMA2 Stream1 = Usart6 RX
+
+endchoice
+
+config CHIP_STM32_DMAV2_DMA2_STREAM2_MAPPING_ENABLE
+	bool "DMA2 Stream2 mapping"
+	default n
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM2_ENABLE
+	help
+		Mapping DMA2 Stream2 to specified peripheral.
+
+choice
+	prompt "DMA2 Stream2 choice"
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM2_MAPPING_ENABLE
+	help
+		DMA2 Stream2 choice:
+		- Usart1 RX connected to DMA2 Stream2,
+		- Usart6 RX connected to DMA2 Stream2.
+
+config CHIP_STM32F4_DMA2_STREAM2_USART1_RX
+	bool "Usart1 RX"
+	help
+		DMA2 Stream2 = Usart1 RX
+
+config CHIP_STM32F4_DMA2_STREAM2_USART6_RX
+	bool "Usart6 RX"
+	help
+		DMA2 Stream2 = Usart6 RX
+
+endchoice
+
+config CHIP_STM32_DMAV2_DMA2_STREAM3_MAPPING_ENABLE
+	bool "DMA2 Stream3 mapping"
+	default n
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM3_ENABLE
+	help
+		Mapping DMA2 Stream3 to specified peripheral.
+
+choice
+	prompt "DMA2 Stream3 choice"
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM3_MAPPING_ENABLE
+	help
+		DMA2 Stream3 choice:
+		- Uart10 RX connected to DMA2 Stream3.
+
+config CHIP_STM32F4_DMA2_STREAM3_UART10_RX
+	bool "Uart10 RX"
+	help
+		DMA2 Stream3 = Uart10 RX
+
+endchoice
+
+config CHIP_STM32_DMAV2_DMA2_STREAM5_MAPPING_ENABLE
+	bool "DMA2 Stream5 mapping"
+	default n
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM5_ENABLE
+	help
+		Mapping DMA2 Stream5 to specified peripheral.
+
+choice
+	prompt "DMA2 Stream5 choice"
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM5_MAPPING_ENABLE
+	help
+		DMA2 Stream5 choice:
+		- Usart1 RX connected to DMA2 Stream5,
+		- Uart10 TX connected to DMA2 Stream5.
+
+config CHIP_STM32F4_DMA2_STREAM5_USART1_RX
+	bool "Usart1 RX"
+	help
+		DMA2 Stream5 = Usart1 RX
+
+config CHIP_STM32F4_DMA2_STREAM5_UART10_TX
+	bool "Uart10 TX"
+	help
+		DMA2 Stream5 = Uart10 RX
+
+endchoice
+
+config CHIP_STM32_DMAV2_DMA2_STREAM6_MAPPING_ENABLE
+	bool "DMA2 Stream6 mapping"
+	default n
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM6_ENABLE
+	help
+		Mapping DMA2 Stream6 to specified peripheral.
+
+choice
+	prompt "DMA2 Stream6 choice"
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM6_MAPPING_ENABLE
+	help
+		DMA2 Stream6 choice:
+		- Usart6 TX connected to DMA2 Stream6.
+
+config CHIP_STM32F4_DMA2_STREAM6_USART6_TX
+	bool "Usart6 TX"
+	help
+		DMA2 Stream6 = Usart6 TX
+
+endchoice
+
+config CHIP_STM32_DMAV2_DMA2_STREAM7_MAPPING_ENABLE
+	bool "DMA2 Stream7 mapping"
+	default n
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM7_ENABLE
+	help
+		Mapping DMA2 Stream7 to specified peripheral.
+
+choice
+	prompt "DMA2 Stream7 choice"
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM7_MAPPING_ENABLE
+	help
+		DMA2 Stream7 choice:
+		- Uart9 RX connected to DMA2 Stream7,
+		- Usart1 TX connected to DMA2 Stream7,
+		- Usart6 TX connected to DMA2 Stream7,
+		- Uart10 TX connected to DMA2 Stream7.
+
+config CHIP_STM32F4_DMA2_STREAM7_UART9_RX
+	bool "Uart9 RX"
+	help
+		DMA2 Stream7 = Uart9 RX
+
+config CHIP_STM32F4_DMA2_STREAM7_USART1_TX
+	bool "Usart1 TX"
+	help
+		DMA2 Stream7 = Usart1 TX
+
+config CHIP_STM32F4_DMA2_STREAM7_USART6_TX
+	bool "Usart6 TX"
+	help
+		DMA2 Stream7 = Usart6 TX
+
+config CHIP_STM32F4_DMA2_STREAM7_UART10_TX
+	bool "Uart10 TX"
+	help
+		DMA2 Stream7 = Uart10 TX
+
+endchoice
+
+endmenu
+
 config CHIP_STM32F40
 	bool
 	default n
@@ -2196,6 +2589,242 @@ config CHIP_STM32F4_RCC_PPRE2
 	default 4 if CHIP_STM32F4_RCC_APB2_DIV4
 	default 8 if CHIP_STM32F4_RCC_APB2_DIV8
 	default 16 if CHIP_STM32F4_RCC_APB2_DIV16
+
+config CHIP_DMAV2_DMA1_STREAM0_MAPPING_SELECTION
+	int
+	default 4 if CHIP_STM32F4_DMA1_STREAM0_UART5_RX
+	default 5 if CHIP_STM32F4_DMA1_STREAM0_UART8_TX
+
+config CHIP_DMAV2_DMA1_STREAM1_MAPPING_SELECTION
+	int
+	default 4 if CHIP_STM32F4_DMA1_STREAM1_USART3_RX
+	default 5 if CHIP_STM32F4_DMA1_STREAM1_UART7_TX
+
+config CHIP_DMAV2_DMA1_STREAM2_MAPPING_SELECTION
+	int
+	default 4 if CHIP_STM32F4_DMA1_STREAM2_UART4_RX
+
+config CHIP_DMAV2_DMA1_STREAM3_MAPPING_SELECTION
+	int
+	default 4 if CHIP_STM32F4_DMA1_STREAM3_USART3_TX
+	default 5 if CHIP_STM32F4_DMA1_STREAM3_UART7_RX
+
+config CHIP_DMAV2_DMA1_STREAM4_MAPPING_SELECTION
+	int
+	default 4 if CHIP_STM32F4_DMA1_STREAM4_UART4_TX
+	default 7 if CHIP_STM32F4_DMA1_STREAM4_USART3_TX
+
+config CHIP_DMAV2_DMA1_STREAM5_MAPPING_SELECTION
+	int
+	default 4 if CHIP_STM32F4_DMA1_STREAM5_USART2_RX
+
+config CHIP_DMAV2_DMA1_STREAM6_MAPPING_SELECTION
+	int
+	default 4 if CHIP_STM32F4_DMA1_STREAM6_USART2_TX
+	default 5 if CHIP_STM32F4_DMA1_STREAM6_UART8_RX
+
+config CHIP_DMAV2_DMA1_STREAM7_MAPPING_SELECTION
+	int
+	default 4 if CHIP_STM32F4_DMA1_STREAM7_UART5_TX
+
+config CHIP_DMAV2_DMA2_STREAM0_MAPPING_SELECTION
+	int
+	default 1 if CHIP_STM32F4_DMA2_STREAM0_UART9_TX
+	default 5 if CHIP_STM32F4_DMA2_STREAM0_UART10_RX
+
+config CHIP_DMAV2_DMA2_STREAM1_MAPPING_SELECTION
+	int
+	default 5 if CHIP_STM32F4_DMA2_STREAM1_USART6_RX
+
+config CHIP_DMAV2_DMA2_STREAM2_MAPPING_SELECTION
+	int
+	default 4 if CHIP_STM32F4_DMA2_STREAM2_USART1_RX
+	default 5 if CHIP_STM32F4_DMA2_STREAM2_USART6_RX
+
+config CHIP_DMAV2_DMA2_STREAM3_MAPPING_SELECTION
+	int
+	default 9 if CHIP_STM32F4_DMA2_STREAM3_UART10_RX
+
+config CHIP_DMAV2_DMA2_STREAM5_MAPPING_SELECTION
+	int
+	default 4 if CHIP_STM32F4_DMA2_STREAM5_USART1_RX
+	default 9 if CHIP_STM32F4_DMA2_STREAM5_UART10_TX
+
+config CHIP_DMAV2_DMA2_STREAM6_MAPPING_SELECTION
+	int
+	default 5 if CHIP_STM32F4_DMA2_STREAM6_USART6_TX
+
+config CHIP_DMAV2_DMA2_STREAM7_MAPPING_SELECTION
+	int
+	default 0 if CHIP_STM32F4_DMA2_STREAM7_UART9_RX
+	default 4 if CHIP_STM32F4_DMA2_STREAM7_USART1_TX
+	default 5 if CHIP_STM32F4_DMA2_STREAM7_USART6_TX
+	default 6 if CHIP_STM32F4_DMA2_STREAM7_UART10_TX
+
+config CHIP_STM32_USARTV1_USART1_TX_DMA_MODULE
+	int
+	default 2 if CHIP_STM32F4_DMA2_STREAM7_USART1_TX
+
+config CHIP_STM32_USARTV1_USART1_TX_DMA_STREAM
+	int
+	default 7 if CHIP_STM32F4_DMA2_STREAM7_USART1_TX
+
+config CHIP_STM32_USARTV1_USART1_RX_DMA_MODULE
+	int
+	default 2 if CHIP_STM32F4_DMA2_STREAM2_USART1_RX || CHIP_STM32F4_DMA2_STREAM5_USART1_RX
+
+config CHIP_STM32_USARTV1_USART1_RX_DMA_STREAM
+	int
+	default 2 if CHIP_STM32F4_DMA2_STREAM2_USART1_RX
+	default 5 if CHIP_STM32F4_DMA2_STREAM5_USART1_RX
+
+config CHIP_STM32_USARTV1_USART2_TX_DMA_MODULE
+	int
+	default 1 if CHIP_STM32F4_DMA1_STREAM6_USART2_TX
+
+config CHIP_STM32_USARTV1_USART2_TX_DMA_STREAM
+	int
+	default 6 if CHIP_STM32F4_DMA1_STREAM6_USART2_TX
+
+config CHIP_STM32_USARTV1_USART2_RX_DMA_MODULE
+	int
+	default 1 if CHIP_STM32F4_DMA1_STREAM5_USART2_RX
+
+config CHIP_STM32_USARTV1_USART2_RX_DMA_STREAM
+	int
+	default 5 if CHIP_STM32F4_DMA1_STREAM5_USART2_RX
+
+config CHIP_STM32_USARTV1_USART3_TX_DMA_MODULE
+	int
+	default 1 if CHIP_STM32F4_DMA1_STREAM3_USART3_TX || CHIP_STM32F4_DMA1_STREAM4_USART3_TX
+
+config CHIP_STM32_USARTV1_USART3_TX_DMA_STREAM
+	int
+	default 3 if CHIP_STM32F4_DMA1_STREAM3_USART3_TX
+	default 4 if CHIP_STM32F4_DMA1_STREAM4_USART3_TX
+
+config CHIP_STM32_USARTV1_USART3_RX_DMA_MODULE
+	int
+	default 1 if CHIP_STM32F4_DMA1_STREAM1_USART3_RX
+
+config CHIP_STM32_USARTV1_USART3_RX_DMA_STREAM
+	int
+	default 1 if CHIP_STM32F4_DMA1_STREAM1_USART3_RX
+
+config CHIP_STM32_USARTV1_UART4_TX_DMA_MODULE
+	int
+	default 1 if CHIP_STM32F4_DMA1_STREAM4_UART4_TX
+
+config CHIP_STM32_USARTV1_UART4_TX_DMA_STREAM
+	int
+	default 4 if CHIP_STM32F4_DMA1_STREAM4_UART4_TX
+
+config CHIP_STM32_USARTV1_UART4_RX_DMA_MODULE
+	int
+	default 1 if CHIP_STM32F4_DMA1_STREAM2_UART4_RX
+
+config CHIP_STM32_USARTV1_UART4_RX_DMA_STREAM
+	int
+	default 2 if CHIP_STM32F4_DMA1_STREAM2_UART4_RX
+
+config CHIP_STM32_USARTV1_UART5_TX_DMA_MODULE
+	int
+	default 1 if CHIP_STM32F4_DMA1_STREAM7_UART5_TX
+
+config CHIP_STM32_USARTV1_UART5_TX_DMA_STREAM
+	int
+	default 7 if CHIP_STM32F4_DMA1_STREAM7_UART5_TX
+
+config CHIP_STM32_USARTV1_UART5_RX_DMA_MODULE
+	int
+	default 1 if CHIP_STM32F4_DMA1_STREAM0_UART5_RX
+
+config CHIP_STM32_USARTV1_UART5_RX_DMA_STREAM
+	int
+	default 0 if CHIP_STM32F4_DMA1_STREAM0_UART5_RX
+
+config CHIP_STM32_USARTV1_USART6_TX_DMA_MODULE
+	int
+	default 2 if CHIP_STM32F4_DMA2_STREAM6_USART6_TX || CHIP_STM32F4_DMA2_STREAM7_USART6_TX
+
+config CHIP_STM32_USARTV1_USART6_TX_DMA_STREAM
+	int
+	default 6 if CHIP_STM32F4_DMA2_STREAM6_USART6_TX
+	default 7 if CHIP_STM32F4_DMA2_STREAM7_USART6_TX
+
+config CHIP_STM32_USARTV1_USART6_RX_DMA_MODULE
+	int
+	default 2 if CHIP_STM32F4_DMA2_STREAM1_USART6_RX || CHIP_STM32F4_DMA2_STREAM2_USART6_RX
+
+config CHIP_STM32_USARTV1_USART6_RX_DMA_STREAM
+	int
+	default 1 if CHIP_STM32F4_DMA2_STREAM1_USART6_RX
+	default 2 if CHIP_STM32F4_DMA2_STREAM2_USART6_RX
+
+config CHIP_STM32_USARTV1_UART7_TX_DMA_MODULE
+	int
+	default 1 if CHIP_STM32F4_DMA1_STREAM1_UART7_TX
+
+config CHIP_STM32_USARTV1_UART7_TX_DMA_STREAM
+	int
+	default 1 if CHIP_STM32F4_DMA1_STREAM1_UART7_TX
+
+config CHIP_STM32_USARTV1_UART7_RX_DMA_MODULE
+	int
+	default 1 if CHIP_STM32F4_DMA1_STREAM3_UART7_RX
+
+config CHIP_STM32_USARTV1_UART7_RX_DMA_STREAM
+	int
+	default 3 if CHIP_STM32F4_DMA1_STREAM3_UART7_RX
+
+config CHIP_STM32_USARTV1_UART8_TX_DMA_MODULE
+	int
+	default 1 if CHIP_STM32F4_DMA1_STREAM0_UART8_TX
+
+config CHIP_STM32_USARTV1_UART8_TX_DMA_STREAM
+	int
+	default 0 if CHIP_STM32F4_DMA1_STREAM0_UART8_TX
+
+config CHIP_STM32_USARTV1_UART8_RX_DMA_MODULE
+	int
+	default 1 if CHIP_STM32F4_DMA1_STREAM6_UART8_RX
+
+config CHIP_STM32_USARTV1_UART8_RX_DMA_STREAM
+	int
+	default 6 if CHIP_STM32F4_DMA1_STREAM6_UART8_RX
+
+config CHIP_STM32_USARTV1_UART9_TX_DMA_MODULE
+	int
+	default 2 if CHIP_STM32F4_DMA2_STREAM7_UART9_TX
+
+config CHIP_STM32_USARTV1_UART9_TX_DMA_STREAM
+	int
+	default 7 if CHIP_STM32F4_DMA2_STREAM7_UART9_TX
+
+config CHIP_STM32_USARTV1_UART9_RX_DMA_MODULE
+	int
+	default 2 if CHIP_STM32F4_DMA2_STREAM0_UART9_RX
+
+config CHIP_STM32_USARTV1_UART9_RX_DMA_STREAM
+	int
+	default 0 if CHIP_STM32F4_DMA2_STREAM0_UART9_RX
+
+config CHIP_STM32_USARTV1_UART10_TX_DMA_MODULE
+	int
+	default 2 if CHIP_STM32F4_DMA2_STREAM5_UART10_TX
+
+config CHIP_STM32_USARTV1_UART10_TX_DMA_STREAM
+	int
+	default 5 if CHIP_STM32F4_DMA2_STREAM5_UART10_TX
+
+config CHIP_STM32_USARTV1_UART10_RX_DMA_MODULE
+	int
+	default 2 if CHIP_STM32F4_DMA2_STREAM0_UART10_RX || CHIP_STM32F4_DMA2_STREAM3_UART10_RX
+
+config CHIP_STM32_USARTV1_UART10_RX_DMA_STREAM
+	int
+	default 0 if CHIP_STM32F4_DMA2_STREAM0_UART10_RX
+	default 3 if CHIP_STM32F4_DMA2_STREAM3_UART10_RX
 
 config CHIP
 	string
