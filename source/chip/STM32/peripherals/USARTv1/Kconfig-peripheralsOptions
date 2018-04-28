@@ -16,12 +16,34 @@ config CHIP_STM32_USARTV1_USART1_ENABLE
 	help
 		Enable USART1 low-level driver
 
+if CHIP_STM32_USARTV1_USART1_ENABLE
+
+config CHIP_STM32_USARTV1_USART1_DMA_ENABLE
+	bool "DMA mode for USART1"
+	default n
+	depends on CHIP_STM32_USARTV1_HAS_DMA
+	help
+		Enable DMA mode for USART1 low-level driver
+
+endif	# CHIP_STM32_USARTV1_USART1_ENABLE
+
 config CHIP_STM32_USARTV1_USART2_ENABLE
 	bool "USART2 low-level driver"
 	default n
 	depends on CHIP_STM32_USARTV1_HAS_USART2
 	help
 		Enable USART2 low-level driver
+
+if CHIP_STM32_USARTV1_USART2_ENABLE
+
+config CHIP_STM32_USARTV1_USART2_DMA_ENABLE
+	bool "DMA mode for USART2"
+	default n
+	depends on CHIP_STM32_USARTV1_HAS_DMA
+	help
+		Enable DMA mode for USART2 low-level driver
+
+endif	# CHIP_STM32_USARTV1_USART2_ENABLE
 
 config CHIP_STM32_USARTV1_USART3_ENABLE
 	bool "USART3 low-level driver"
@@ -30,12 +52,34 @@ config CHIP_STM32_USARTV1_USART3_ENABLE
 	help
 		Enable USART3 low-level driver
 
+if CHIP_STM32_USARTV1_USART3_ENABLE
+
+config CHIP_STM32_USARTV1_USART3_DMA_ENABLE
+	bool "DMA mode for USART3"
+	default n
+	depends on CHIP_STM32_USARTV1_HAS_DMA
+	help
+		Enable DMA mode for USART3 low-level driver
+
+endif	# CHIP_STM32_USARTV1_USART3_ENABLE
+
 config CHIP_STM32_USARTV1_UART4_ENABLE
 	bool "UART4 low-level driver"
 	default n
 	depends on CHIP_STM32_USARTV1_HAS_UART4
 	help
 		Enable UART4 low-level driver
+
+if CHIP_STM32_USARTV1_UART4_ENABLE
+
+config CHIP_STM32_USARTV1_USART4_DMA_ENABLE
+	bool "DMA mode for UART4"
+	default n
+	depends on CHIP_STM32_USARTV1_HAS_DMA
+	help
+		Enable DMA mode for UART4 low-level driver
+
+endif	# CHIP_STM32_USARTV1_UART4_ENABLE
 
 config CHIP_STM32_USARTV1_UART5_ENABLE
 	bool "UART5 low-level driver"
@@ -44,12 +88,34 @@ config CHIP_STM32_USARTV1_UART5_ENABLE
 	help
 		Enable UART5 low-level driver
 
+if CHIP_STM32_USARTV1_UART5_ENABLE
+
+config CHIP_STM32_USARTV1_UART5_DMA_ENABLE
+	bool "DMA mode for UART5"
+	default n
+	depends on CHIP_STM32_USARTV1_HAS_DMA
+	help
+		Enable DMA mode for UART5 low-level driver
+
+endif	# CHIP_STM32_USARTV1_UART5_ENABLE
+
 config CHIP_STM32_USARTV1_USART6_ENABLE
 	bool "USART6 low-level driver"
 	default n
 	depends on CHIP_STM32_USARTV1_HAS_USART6
 	help
 		Enable USART6 low-level driver
+
+if CHIP_STM32_USARTV1_USART6_ENABLE
+
+config CHIP_STM32_USARTV1_USART6_DMA_ENABLE
+	bool "DMA mode for USART6"
+	default n
+	depends on CHIP_STM32_USARTV1_HAS_DMA
+	help
+		Enable DMA mode for USART6 low-level driver
+
+endif	# CHIP_STM32_USARTV1_USART6_ENABLE
 
 config CHIP_STM32_USARTV1_UART7_ENABLE
 	bool "UART7 low-level driver"
@@ -58,12 +124,34 @@ config CHIP_STM32_USARTV1_UART7_ENABLE
 	help
 		Enable UART7 low-level driver
 
+if CHIP_STM32_USARTV1_UART7_ENABLE
+
+config CHIP_STM32_USARTV1_UART7_DMA_ENABLE
+	bool "DMA mode for UART7"
+	default n
+	depends on CHIP_STM32_USARTV1_HAS_DMA
+	help
+		Enable DMA mode for UART7 low-level driver
+
+endif	# CHIP_STM32_USARTV1_UART7_ENABLE
+
 config CHIP_STM32_USARTV1_UART8_ENABLE
 	bool "UART8 low-level driver"
 	default n
 	depends on CHIP_STM32_USARTV1_HAS_UART8
 	help
 		Enable UART8 low-level driver
+
+if CHIP_STM32_USARTV1_UART8_ENABLE
+
+config CHIP_STM32_USARTV1_UART8_DMA_ENABLE
+	bool "DMA mode for UART8"
+	default n
+	depends on CHIP_STM32_USARTV1_HAS_DMA
+	help
+		Enable DMA mode for UART8 low-level driver
+
+endif	# CHIP_STM32_USARTV1_UART8_ENABLE
 
 config CHIP_STM32_USARTV1_UART9_ENABLE
 	bool "UART9 low-level driver"
@@ -72,12 +160,38 @@ config CHIP_STM32_USARTV1_UART9_ENABLE
 	help
 		Enable UART9 low-level driver
 
+if CHIP_STM32_USARTV1_UART9_ENABLE
+
+config CHIP_STM32_USARTV1_UART9_DMA_ENABLE
+	bool "DMA mode for UART9"
+	default n
+	depends on CHIP_STM32_USARTV1_HAS_DMA
+	help
+		Enable DMA mode for UART9 low-level driver
+
+endif	# CHIP_STM32_USARTV1_UART9_ENABLE
+
 config CHIP_STM32_USARTV1_UART10_ENABLE
 	bool "UART10 low-level driver"
 	default n
 	depends on CHIP_STM32_USARTV1_HAS_UART10
 	help
 		Enable UART10 low-level driver
+
+if CHIP_STM32_USARTV1_UART10_ENABLE
+
+config CHIP_STM32_USARTV1_UART10_DMA_ENABLE
+	bool "DMA mode for UART10"
+	default n
+	depends on CHIP_STM32_USARTV1_HAS_DMA
+	help
+		Enable DMA mode for UART10 low-level driver
+
+endif	# CHIP_STM32_USARTV1_UART10_ENABLE
+
+config CHIP_STM32_USARTV1_HAS_DMA
+	bool
+	default n
 
 config CHIP_STM32_USARTV1_HAS_CR1_OVER8_BIT
 	bool
