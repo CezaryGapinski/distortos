@@ -11,8 +11,12 @@
  */
 
 #include "distortos/chip/uarts.hpp"
-
 #include "distortos/chip/ChipUartInterruptLowLevel.hpp"
+
+#ifdef CONFIG_CHIP_STM32_DMAV2
+#include "distortos/chip/dmaStreams.hpp"
+#include "distortos/chip/ChipUartDmaV2LowLevel.hpp"
+#endif	// CONFIG_CHIP_STM32_DMAV2
 
 namespace distortos
 {
@@ -26,61 +30,201 @@ namespace chip
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_USART1_ENABLE
 
+#ifdef CONFIG_CHIP_STM32_USARTV1_USART1_DMA_ENABLE
+
+ChipUartDmaTransfer usart1DmaTx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_USART1_TX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_USART1_TX_DMA_STREAM)};
+
+ChipUartDmaTransfer usart1DmaRx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_USART1_RX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_USART1_RX_DMA_STREAM)};
+
+ChipUartDmaLowLevel usart1 {ChipUartLowLevel::usart1Parameters, usart1DmaTx, usart1DmaRx};
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_USART1_DMA_ENABLE
+
 ChipUartInterruptLowLevel usart1 {ChipUartLowLevel::usart1Parameters};
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_USART1_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_USART1_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_USART2_ENABLE
 
+#ifdef CONFIG_CHIP_STM32_USARTV1_USART2_DMA_ENABLE
+
+ChipUartDmaTransfer usart2DmaTx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_USART2_TX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_USART2_TX_DMA_STREAM)};
+
+ChipUartDmaTransfer usart2DmaRx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_USART2_RX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_USART2_RX_DMA_STREAM)};
+
+ChipUartDmaLowLevel usart2 {ChipUartLowLevel::usart2Parameters, usart2DmaTx, usart2DmaRx};
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_USART2_DMA_ENABLE
+
 ChipUartInterruptLowLevel usart2 {ChipUartLowLevel::usart2Parameters};
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_USART2_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_USART2_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_USART3_ENABLE
 
+#ifdef CONFIG_CHIP_STM32_USARTV1_USART3_DMA_ENABLE
+
+ChipUartDmaTransfer usart3DmaTx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_USART3_TX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_USART3_TX_DMA_STREAM)};
+
+ChipUartDmaTransfer usart3DmaRx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_USART3_RX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_USART3_RX_DMA_STREAM)};
+
+ChipUartDmaLowLevel usart3 {ChipUartLowLevel::usart3Parameters, usart3DmaTx, usart3DmaRx};
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_USART3_DMA_ENABLE
+
 ChipUartInterruptLowLevel usart3 {ChipUartLowLevel::usart3Parameters};
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_USART3_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_USART3_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_UART4_ENABLE
 
+#ifdef CONFIG_CHIP_STM32_USARTV1_UART4_DMA_ENABLE
+
+ChipUartDmaTransfer uart4DmaTx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_UART4_TX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_UART4_TX_DMA_STREAM)};
+
+ChipUartDmaTransfer uart4DmaRx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_UART4_RX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_UART4_RX_DMA_STREAM)};
+
+ChipUartDmaLowLevel uart4 {ChipUartLowLevel::uart4Parameters, uart4DmaTx, uart4DmaRx};
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_UART4_DMA_ENABLE
+
 ChipUartInterruptLowLevel uart4 {ChipUartLowLevel::uart4Parameters};
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_UART4_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_UART4_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_UART5_ENABLE
 
+#ifdef CONFIG_CHIP_STM32_USARTV1_UART5_DMA_ENABLE
+
+ChipUartDmaTransfer uart5DmaTx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_UART5_TX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_UART5_TX_DMA_STREAM)};
+
+ChipUartDmaTransfer uart5DmaRx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_UART5_RX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_UART5_RX_DMA_STREAM)};
+
+ChipUartDmaLowLevel uart5 {ChipUartLowLevel::uart5Parameters, uart5DmaTx, uart5DmaRx};
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_UART5_DMA_ENABLE
+
 ChipUartInterruptLowLevel uart5 {ChipUartLowLevel::uart5Parameters};
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_UART5_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_UART5_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_USART6_ENABLE
 
+#ifdef CONFIG_CHIP_STM32_USARTV1_USART6_DMA_ENABLE
+
+ChipUartDmaTransfer usart6DmaTx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_USART6_TX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_USART6_TX_DMA_STREAM)};
+
+ChipUartDmaTransfer usart6DmaRx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_USART6_RX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_USART6_RX_DMA_STREAM)};
+
+ChipUartDmaLowLevel usart6 {ChipUartLowLevel::usart6Parameters, usart6DmaTx, usart6DmaRx};
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_USART6_DMA_ENABLE
+
 ChipUartInterruptLowLevel usart6 {ChipUartLowLevel::usart6Parameters};
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_USART6_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_USART6_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_UART7_ENABLE
 
+#ifdef CONFIG_CHIP_STM32_USARTV1_UART7_DMA_ENABLE
+
+ChipUartDmaTransfer uart7DmaTx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_UART7_TX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_UART7_TX_DMA_STREAM)};
+
+ChipUartDmaTransfer uart7DmaRx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_UART7_RX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_UART7_RX_DMA_STREAM)};
+
+ChipUartDmaLowLevel uart7 {ChipUartLowLevel::uart7Parameters, uart7DmaTx, uart7DmaRx};
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_UART7_DMA_ENABLE
+
 ChipUartInterruptLowLevel uart7 {ChipUartLowLevel::uart7Parameters};
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_UART7_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_UART7_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_UART8_ENABLE
 
+#ifdef CONFIG_CHIP_STM32_USARTV1_UART8_DMA_ENABLE
+
+ChipUartDmaTransfer uart8DmaTx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_UART8_TX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_UART8_TX_DMA_STREAM)};
+
+ChipUartDmaTransfer uart8DmaRx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_UART8_RX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_UART8_RX_DMA_STREAM)};
+
+ChipUartDmaLowLevel uart8 {ChipUartLowLevel::uart8Parameters, uart8DmaTx, uart8DmaRx};
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_UART8_DMA_ENABLE
+
 ChipUartInterruptLowLevel uart8 {ChipUartLowLevel::uart8Parameters};
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_UART8_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_UART8_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_UART9_ENABLE
 
+#ifdef CONFIG_CHIP_STM32_USARTV1_UART9_DMA_ENABLE
+
+ChipUartDmaTransfer uart9DmaTx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_UART9_TX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_UART9_TX_DMA_STREAM)};
+
+ChipUartDmaTransfer uart9DmaRx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_UART9_RX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_UART9_RX_DMA_STREAM)};
+
+ChipUartDmaLowLevel uart9 {ChipUartLowLevel::uart9Parameters, uart9DmaTx, uart9DmaRx};
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_UART9_DMA_ENABLE
+
 ChipUartInterruptLowLevel uart9 {ChipUartLowLevel::uart9Parameters};
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_UART9_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_UART9_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_UART10_ENABLE
 
+#ifdef CONFIG_CHIP_STM32_USARTV1_UART10_DMA_ENABLE
+
+ChipUartDmaTransfer uart10DmaTx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_UART10_TX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_UART10_TX_DMA_STREAM)};
+
+ChipUartDmaTransfer uart10DmaRx {getDmaLowLevel(CONFIG_CHIP_STM32_USARTV1_UART10_RX_DMA_MODULE,
+		CONFIG_CHIP_STM32_USARTV1_UART10_RX_DMA_STREAM)};
+
+ChipUartDmaLowLevel uart10 {ChipUartLowLevel::uart10Parameters, uart10DmaTx, uart10DmaRx};
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_UART10_DMA_ENABLE
+
 ChipUartInterruptLowLevel uart10 {ChipUartLowLevel::uart10Parameters};
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_UART10_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_UART10_ENABLE
 

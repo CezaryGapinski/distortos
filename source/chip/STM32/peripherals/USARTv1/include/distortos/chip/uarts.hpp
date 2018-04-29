@@ -22,6 +22,7 @@ namespace chip
 {
 
 class ChipUartInterruptLowLevel;
+class ChipUartDmaLowLevel;
 
 /*---------------------------------------------------------------------------------------------------------------------+
 | global objects
@@ -29,71 +30,161 @@ class ChipUartInterruptLowLevel;
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_USART1_ENABLE
 
-/// UART low-level driver for USART1
+#ifdef CONFIG_CHIP_STM32_USARTV1_USART1_DMA_ENABLE
+
+/// UART low-level driver in DMA mode for USART1
+extern ChipUartDmaLowLevel usart1;
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_USART1_DMA_ENABLE
+
+/// UART low-level driver in interrupt mode for USART1
 extern ChipUartInterruptLowLevel usart1;
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_USART1_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_USART1_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_USART2_ENABLE
 
-/// UART low-level driver for USART2
+#ifdef CONFIG_CHIP_STM32_USARTV1_USART2_DMA_ENABLE
+
+/// UART low-level driver in DMA mode for USART2
+extern ChipUartDmaLowLevel usart2;
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_USART2_DMA_ENABLE
+
+/// UART low-level driver in interrupt mode for USART2
 extern ChipUartInterruptLowLevel usart2;
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_USART2_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_USART2_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_USART3_ENABLE
 
-/// UART low-level driver for USART3
+#ifdef CONFIG_CHIP_STM32_USARTV1_USART3_DMA_ENABLE
+
+/// UART low-level driver in DMA mode for USART3
+extern ChipUartDmaLowLevel usart3;
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_USART3_DMA_ENABLE
+
+/// UART low-level driver in interrupt mode for USART3
 extern ChipUartInterruptLowLevel usart3;
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_USART3_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_USART3_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_UART4_ENABLE
 
-/// UART low-level driver for UART4
+#ifdef CONFIG_CHIP_STM32_USARTV1_UART4_DMA_ENABLE
+
+/// UART low-level driver in DMA mode for UART4
+extern ChipUartDmaLowLevel uart4;
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_UART4_DMA_ENABLE
+
+/// UART low-level driver in interrupt mode for UART4
 extern ChipUartInterruptLowLevel uart4;
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_UART4_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_UART4_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_UART5_ENABLE
 
-/// UART low-level driver for UART5
+#ifdef CONFIG_CHIP_STM32_USARTV1_UART5_DMA_ENABLE
+
+/// UART low-level driver in DMA mode for UART5
+extern ChipUartDmaLowLevel uart5;
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_UART5_DMA_ENABLE
+
+/// UART low-level driver in interrupt mode for UART5
 extern ChipUartInterruptLowLevel uart5;
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_UART5_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_UART5_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_USART6_ENABLE
 
-/// UART low-level driver for USART6
+#ifdef CONFIG_CHIP_STM32_USARTV1_USART6_DMA_ENABLE
+
+/// UART low-level driver in DMA mode for USART6
+extern ChipUartDmaLowLevel usart6;
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_USART6_DMA_ENABLE
+
+/// UART low-level driver in interrupt mode for USART6
 extern ChipUartInterruptLowLevel usart6;
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_USART6_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_USART6_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_UART7_ENABLE
 
-/// UART low-level driver for UART7
+#ifdef CONFIG_CHIP_STM32_USARTV1_UART7_DMA_ENABLE
+
+/// UART low-level driver in DMA mode for UART7
+extern ChipUartDmaLowLevel uart7;
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_UART7_DMA_ENABLE
+
+/// UART low-level driver in interrupt mode for UART7
 extern ChipUartInterruptLowLevel uart7;
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_UART7_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_UART7_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_UART8_ENABLE
 
-/// UART low-level driver for UART8
+#ifdef CONFIG_CHIP_STM32_USARTV1_UART8_DMA_ENABLE
+
+/// UART low-level driver in DMA mode for UART8
+extern ChipUartDmaLowLevel uart8;
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_UART8_DMA_ENABLE
+
+/// UART low-level driver in interrupt mode for UART8
 extern ChipUartInterruptLowLevel uart8;
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_UART8_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_UART8_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_UART9_ENABLE
 
-/// UART low-level driver for UART9
+#ifdef CONFIG_CHIP_STM32_USARTV1_UART9_DMA_ENABLE
+
+/// UART low-level driver in DMA mode for UART9
+extern ChipUartDmaLowLevel uart9;
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_UART9_DMA_ENABLE
+
+/// UART low-level driver in interrupt mode for UART9
 extern ChipUartInterruptLowLevel uart9;
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_UART9_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_UART9_ENABLE
 
 #ifdef CONFIG_CHIP_STM32_USARTV1_UART10_ENABLE
 
-/// UART low-level driver for UART10
+#ifdef CONFIG_CHIP_STM32_USARTV1_UART10_DMA_ENABLE
+
+/// UART low-level driver in DMA mode for UART10
+extern ChipUartDmaLowLevel uart10;
+
+#else	// def !CONFIG_CHIP_STM32_USARTV1_UART10_DMA_ENABLE
+
+/// UART low-level driver in interrupt mode for UART10
 extern ChipUartInterruptLowLevel uart10;
+
+#endif	// def !CONFIG_CHIP_STM32_USARTV1_UART10_DMA_ENABLE
 
 #endif	// def CONFIG_CHIP_STM32_USARTV1_UART10_ENABLE
 
