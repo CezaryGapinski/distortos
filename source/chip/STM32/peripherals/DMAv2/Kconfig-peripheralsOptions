@@ -32,12 +32,38 @@ config CHIP_STM32_DMAV2_DMA1_STREAM0_ENABLE
 	help
 		Enable DMA1 stream 0 low-level driver
 
+config CHIP_STM32_DMAV2_DMA1_STREAM0_PRIORITY_LEVEL
+	int "DMA1 stream 0 priority level"
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM0_ENABLE
+	default 0
+	range 0 3
+	help
+	Level range
+
+	0 - Low
+	1 - Medium
+	2 - High
+	3 - Very high
+
 config CHIP_STM32_DMAV2_DMA1_STREAM1_ENABLE
 	bool "DMA1 stream 1 low-level driver"
 	default n
 	depends on CHIP_STM32_DMAV2_HAS_DMA1_STREAM1
 	help
 		Enable DMA1 stream 1 low-level driver
+
+config CHIP_STM32_DMAV2_DMA1_STREAM1_PRIORITY_LEVEL
+	int "DMA1 stream 1 priority level"
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM1_ENABLE
+	default 0
+	range 0 3
+	help
+	Level range
+
+	0 - Low
+	1 - Medium
+	2 - High
+	3 - Very high
 
 config CHIP_STM32_DMAV2_DMA1_STREAM2_ENABLE
 	bool "DMA1 stream 2 low-level driver"
@@ -46,12 +72,38 @@ config CHIP_STM32_DMAV2_DMA1_STREAM2_ENABLE
 	help
 		Enable DMA1 stream 2 low-level driver
 
+config CHIP_STM32_DMAV2_DMA1_STREAM2_PRIORITY_LEVEL
+	int "DMA1 stream 2 priority level"
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM2_ENABLE
+	default 0
+	range 0 3
+	help
+	Level range
+
+	0 - Low
+	1 - Medium
+	2 - High
+	3 - Very high
+
 config CHIP_STM32_DMAV2_DMA1_STREAM3_ENABLE
 	bool "DMA1 stream 3 low-level driver"
 	default n
 	depends on CHIP_STM32_DMAV2_HAS_DMA1_STREAM3
 	help
 		Enable DMA1 stream 3 low-level driver
+
+config CHIP_STM32_DMAV2_DMA1_STREAM3_PRIORITY_LEVEL
+	int "DMA1 stream 3 priority level"
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM3_ENABLE
+	default 0
+	range 0 3
+	help
+	Level range
+
+	0 - Low
+	1 - Medium
+	2 - High
+	3 - Very high
 
 config CHIP_STM32_DMAV2_DMA1_STREAM4_ENABLE
 	bool "DMA1 stream 4 low-level driver"
@@ -60,12 +112,38 @@ config CHIP_STM32_DMAV2_DMA1_STREAM4_ENABLE
 	help
 		Enable DMA1 stream 4 low-level driver
 
+config CHIP_STM32_DMAV2_DMA1_STREAM4_PRIORITY_LEVEL
+	int "DMA1 stream 4 priority level"
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM4_ENABLE
+	default 0
+	range 0 3
+	help
+	Level range
+
+	0 - Low
+	1 - Medium
+	2 - High
+	3 - Very high
+
 config CHIP_STM32_DMAV2_DMA1_STREAM5_ENABLE
 	bool "DMA1 stream 5 low-level driver"
 	default n
 	depends on CHIP_STM32_DMAV2_HAS_DMA1_STREAM5
 	help
 		Enable DMA1 stream 5 low-level driver
+
+config CHIP_STM32_DMAV2_DMA1_STREAM5_PRIORITY_LEVEL
+	int "DMA1 stream 5 priority level"
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM5_ENABLE
+	default 0
+	range 0 3
+	help
+	Level range
+
+	0 - Low
+	1 - Medium
+	2 - High
+	3 - Very high
 
 config CHIP_STM32_DMAV2_DMA1_STREAM6_ENABLE
 	bool "DMA1 stream 6 low-level driver"
@@ -74,12 +152,38 @@ config CHIP_STM32_DMAV2_DMA1_STREAM6_ENABLE
 	help
 		Enable DMA1 stream 6 low-level driver
 
+config CHIP_STM32_DMAV2_DMA1_STREAM6_PRIORITY_LEVEL
+	int "DMA1 stream 6 priority level"
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM6_ENABLE
+	default 0
+	range 0 3
+	help
+	Level range
+
+	0 - Low
+	1 - Medium
+	2 - High
+	3 - Very high
+
 config CHIP_STM32_DMAV2_DMA1_STREAM7_ENABLE
 	bool "DMA1 stream 7 low-level driver"
 	default n
 	depends on CHIP_STM32_DMAV2_HAS_DMA1_STREAM7
 	help
 		Enable DMA1 stream 7 low-level driver
+
+config CHIP_STM32_DMAV2_DMA1_STREAM7_PRIORITY_LEVEL
+	int "DMA1 stream 7 priority level"
+	depends on CHIP_STM32_DMAV2_DMA1_STREAM7_ENABLE
+	default 0
+	range 0 3
+	help
+	Level range
+
+	0 - Low
+	1 - Medium
+	2 - High
+	3 - Very high
 
 endif	# CHIP_STM32_DMAV2_DMA1_ENABLE
 
@@ -92,12 +196,38 @@ config CHIP_STM32_DMAV2_DMA2_STREAM0_ENABLE
 	help
 		Enable DMA2 stream 0 low-level driver
 
+config CHIP_STM32_DMAV2_DMA2_STREAM0_PRIORITY_LEVEL
+	int "DMA2 stream 0 priority level"
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM0_ENABLE
+	default 0
+	range 0 3
+	help
+	Level range
+
+	0 - Low
+	1 - Medium
+	2 - High
+	3 - Very high
+
 config CHIP_STM32_DMAV2_DMA2_STREAM1_ENABLE
 	bool "DMA2 stream 1 low-level driver"
 	default n
 	depends on CHIP_STM32_DMAV2_HAS_DMA2_STREAM1
 	help
 		Enable DMA2 stream 1 low-level driver
+
+config CHIP_STM32_DMAV2_DMA2_STREAM1_PRIORITY_LEVEL
+	int "DMA2 stream 1 priority level"
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM1_ENABLE
+	default 0
+	range 0 3
+	help
+	Level range
+
+	0 - Low
+	1 - Medium
+	2 - High
+	3 - Very high
 
 config CHIP_STM32_DMAV2_DMA2_STREAM2_ENABLE
 	bool "DMA2 stream 2 low-level driver"
@@ -106,12 +236,38 @@ config CHIP_STM32_DMAV2_DMA2_STREAM2_ENABLE
 	help
 		Enable DMA2 stream 2 low-level driver
 
+config CHIP_STM32_DMAV2_DMA2_STREAM2_PRIORITY_LEVEL
+	int "DMA2 stream 2 priority level"
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM2_ENABLE
+	default 0
+	range 0 3
+	help
+	Level range
+
+	0 - Low
+	1 - Medium
+	2 - High
+	3 - Very high
+
 config CHIP_STM32_DMAV2_DMA2_STREAM3_ENABLE
 	bool "DMA2 stream 3 low-level driver"
 	default n
 	depends on CHIP_STM32_DMAV2_HAS_DMA2_STREAM3
 	help
 		Enable DMA1 stream 3 low-level driver
+
+config CHIP_STM32_DMAV2_DMA2_STREAM3_PRIORITY_LEVEL
+	int "DMA2 stream 3 priority level"
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM3_ENABLE
+	default 0
+	range 0 3
+	help
+	Level range
+
+	0 - Low
+	1 - Medium
+	2 - High
+	3 - Very high
 
 config CHIP_STM32_DMAV2_DMA2_STREAM4_ENABLE
 	bool "DMA2 stream 4 low-level driver"
@@ -120,12 +276,38 @@ config CHIP_STM32_DMAV2_DMA2_STREAM4_ENABLE
 	help
 		Enable DMA2 stream 4 low-level driver
 
+config CHIP_STM32_DMAV2_DMA2_STREAM4_PRIORITY_LEVEL
+	int "DMA2 stream 4 priority level"
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM4_ENABLE
+	default 0
+	range 0 3
+	help
+	Level range
+
+	0 - Low
+	1 - Medium
+	2 - High
+	3 - Very high
+
 config CHIP_STM32_DMAV2_DMA2_STREAM5_ENABLE
 	bool "DMA2 stream 5 low-level driver"
 	default n
 	depends on CHIP_STM32_DMAV2_HAS_DMA2_STREAM5
 	help
 		Enable DMA2 stream 5 low-level driver
+
+config CHIP_STM32_DMAV2_DMA2_STREAM5_PRIORITY_LEVEL
+	int "DMA2 stream 5 priority level"
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM5_ENABLE
+	default 0
+	range 0 3
+	help
+	Level range
+
+	0 - Low
+	1 - Medium
+	2 - High
+	3 - Very high
 
 config CHIP_STM32_DMAV2_DMA2_STREAM6_ENABLE
 	bool "DMA2 stream 6 low-level driver"
@@ -134,12 +316,38 @@ config CHIP_STM32_DMAV2_DMA2_STREAM6_ENABLE
 	help
 		Enable DMA2 stream 6 low-level driver
 
+config CHIP_STM32_DMAV2_DMA2_STREAM6_PRIORITY_LEVEL
+	int "DMA2 stream 6 priority level"
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM6_ENABLE
+	default 0
+	range 0 3
+	help
+	Level range
+
+	0 - Low
+	1 - Medium
+	2 - High
+	3 - Very high
+
 config CHIP_STM32_DMAV2_DMA2_STREAM7_ENABLE
 	bool "DMA2 stream 7 low-level driver"
 	default n
 	depends on CHIP_STM32_DMAV2_HAS_DMA2_STREAM7
 	help
 		Enable DMA2 stream 7 low-level driver
+
+config CHIP_STM32_DMAV2_DMA2_STREAM7_PRIORITY_LEVEL
+	int "DMA2 stream 7 priority level"
+	depends on CHIP_STM32_DMAV2_DMA2_STREAM7_ENABLE
+	default 0
+	range 0 3
+	help
+	Level range
+
+	0 - Low
+	1 - Medium
+	2 - High
+	3 - Very high
 
 endif	# CHIP_STM32_DMAV2_DMA2_ENABLE
 
