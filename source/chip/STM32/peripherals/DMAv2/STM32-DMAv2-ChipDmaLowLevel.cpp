@@ -12,6 +12,7 @@
 #include "distortos/chip/ChipDmaLowLevel.hpp"
 
 #include "distortos/chip/CMSIS-proxy.h"
+#include "distortos/chip/STM32-bit-banding.h"
 
 #include "distortos/InterruptMaskingLock.hpp"
 
@@ -79,6 +80,36 @@ ChipDmaBase::ErrorSet decodeErrors(const uint32_t isr)
 class ChipDmaLowLevel::Parameters
 {
 public:
+#ifdef DISTORTOS_BITBANDING_SUPPORTED
+
+	/**
+	 * \brief Parameters's constructor
+	 *
+	 * \param [in] dmaBase is a base address of DMA peripheral
+	 * \param [in] dmaStreamBase is a base address of DMA stream peripheral
+	 * \param [in] intStatusOffset is a offset of DMA register with interrupt status
+	 * \param [in] intClearOffset is a offset of DMA register with interrupt clear
+	 * \param [in] shift is a stream shift in registers
+	 */
+
+	constexpr Parameters(const uintptr_t dmaBase, const uintptr_t dmaStreamBase, const size_t intStatusOffset,
+			const size_t intClearOffset, const uint8_t shift) :
+			dmaBase_{dmaBase},
+			dmaStreamBase_{dmaStreamBase},
+			tcieBbAddress_{STM32_BITBAND_IMPLEMENTATION(dmaStreamBase_, DMA_Stream_TypeDef, CR, DMA_SxCR_TCIE)},
+			htieBbAddress_{STM32_BITBAND_IMPLEMENTATION(dmaStreamBase_, DMA_Stream_TypeDef, CR, DMA_SxCR_HTIE)},
+			teieBbAddress_{STM32_BITBAND_IMPLEMENTATION(dmaStreamBase_, DMA_Stream_TypeDef, CR, DMA_SxCR_TEIE)},
+			dmeieBbAddress_{STM32_BITBAND_IMPLEMENTATION(dmaStreamBase_, DMA_Stream_TypeDef, CR, DMA_SxCR_DMEIE)},
+			feieBbAddress_{STM32_BITBAND_IMPLEMENTATION(dmaStreamBase_, DMA_Stream_TypeDef, FCR, DMA_SxFCR_FEIE)},
+			enBbAddress_{STM32_BITBAND_IMPLEMENTATION(dmaStreamBase_, DMA_Stream_TypeDef, CR, DMA_SxCR_EN)},
+			intStatusOffset_{intStatusOffset},
+			intClearOffset_{intClearOffset},
+			shift_{shift}
+	{
+
+	}
+
+#else	// !def DISTORTOS_BITBANDING_SUPPORTED
 
 	/**
 	 * \brief Parameters's constructor
@@ -101,6 +132,8 @@ public:
 
 	}
 
+#endif	// !def DISTORTOS_BITBANDING_SUPPORTED
+
 	/**
 	 * \brief Enables or disables TC interrupt of DMA stream.
 	 *
@@ -109,9 +142,13 @@ public:
 
 	void enableTcInterrupt(const bool enable) const
 	{
+#ifdef DISTORTOS_BITBANDING_SUPPORTED
+		*reinterpret_cast<volatile unsigned long*>(tcieBbAddress_) = enable;
+#else	// !def DISTORTOS_BITBANDING_SUPPORTED
 		auto& dmaStream = getDmaStream();
 		const InterruptMaskingLock interruptMaskingLock;
 		dmaStream.CR = (dmaStream.CR & ~DMA_SxCR_TCIE) | (enable == true ? DMA_SxCR_TCIE : 0);
+#endif	// !def DISTORTOS_BITBANDING_SUPPORTED
 	}
 
 	/**
@@ -122,9 +159,13 @@ public:
 
 	void enableHtInterrupt(const bool enable) const
 	{
+#ifdef DISTORTOS_BITBANDING_SUPPORTED
+		*reinterpret_cast<volatile unsigned long*>(htieBbAddress_) = enable;
+#else	// !def DISTORTOS_BITBANDING_SUPPORTED
 		auto& dmaStream = getDmaStream();
 		const InterruptMaskingLock interruptMaskingLock;
 		dmaStream.CR = (dmaStream.CR & ~DMA_SxCR_HTIE) | (enable == true ? DMA_SxCR_HTIE : 0);
+#endif	// !def DISTORTOS_BITBANDING_SUPPORTED
 	}
 
 	/**
@@ -135,9 +176,13 @@ public:
 
 	void enableTeInterrupt(const bool enable) const
 	{
+#ifdef DISTORTOS_BITBANDING_SUPPORTED
+		*reinterpret_cast<volatile unsigned long*>(teieBbAddress_) = enable;
+#else	// !def DISTORTOS_BITBANDING_SUPPORTED
 		auto& dmaStream = getDmaStream();
 		const InterruptMaskingLock interruptMaskingLock;
 		dmaStream.CR = (dmaStream.CR & ~DMA_SxCR_TEIE) | (enable == true ? DMA_SxCR_TEIE : 0);
+#endif	// !def DISTORTOS_BITBANDING_SUPPORTED
 	}
 
 	/**
@@ -148,9 +193,13 @@ public:
 
 	void enableDmeInterrupt(const bool enable) const
 	{
+#ifdef DISTORTOS_BITBANDING_SUPPORTED
+		*reinterpret_cast<volatile unsigned long*>(dmeieBbAddress_) = enable;
+#else	// !def DISTORTOS_BITBANDING_SUPPORTED
 		auto& dmaStream = getDmaStream();
 		const InterruptMaskingLock interruptMaskingLock;
 		dmaStream.CR = (dmaStream.CR & ~DMA_SxCR_DMEIE) | (enable == true ? DMA_SxCR_DMEIE : 0);
+#endif	// !def DISTORTOS_BITBANDING_SUPPORTED
 	}
 
 	/**
@@ -161,9 +210,13 @@ public:
 
 	void enableFeInterrupt(const bool enable) const
 	{
+#ifdef DISTORTOS_BITBANDING_SUPPORTED
+		*reinterpret_cast<volatile unsigned long*>(feieBbAddress_) = enable;
+#else	// !def DISTORTOS_BITBANDING_SUPPORTED
 		auto& dmaStream = getDmaStream();
 		const InterruptMaskingLock interruptMaskingLock;
 		dmaStream.FCR = (dmaStream.FCR & ~DMA_SxFCR_FEIE) | (enable == true ? DMA_SxFCR_FEIE : 0);
+#endif	// !def DISTORTOS_BITBANDING_SUPPORTED
 	}
 
 	/**
@@ -174,9 +227,13 @@ public:
 
 	void enableStream(const bool enable) const
 	{
+#ifdef DISTORTOS_BITBANDING_SUPPORTED
+		*reinterpret_cast<volatile unsigned long*>(enBbAddress_) = enable;
+#else	// !def DISTORTOS_BITBANDING_SUPPORTED
 		auto& dmaStream = getDmaStream();
 		const InterruptMaskingLock interruptMaskingLock;
 		dmaStream.CR = (dmaStream.CR & ~DMA_SxCR_EN) | (enable == true ? DMA_SxCR_EN : 0);
+#endif	// !def DISTORTOS_BITBANDING_SUPPORTED
 	}
 
 	/**
@@ -261,6 +318,28 @@ private:
 
 	/// base address of DMA stream peripheral
 	uintptr_t dmaStreamBase_;
+
+#ifdef DISTORTOS_BITBANDING_SUPPORTED
+
+	/// address of bitband alias of TCIE bit in DMA_SxCR register
+	uintptr_t tcieBbAddress_;
+
+	/// address of bitband alias of HTIE bit in DMA_SxCR register
+	uintptr_t htieBbAddress_;
+
+	/// address of bitband alias of TEIE bit in DMA_SxCR register
+	uintptr_t teieBbAddress_;
+
+	/// address of bitband alias of DMEIE bit in DMA_SxCR register
+	uintptr_t dmeieBbAddress_;
+
+	/// address of bitband alias of FEIE bit in DMA_SxFCR register
+	uintptr_t feieBbAddress_;
+
+	/// address of bitband alias of EN bit in DMA_SxCR register
+	uintptr_t enBbAddress_;
+
+#endif	// def DISTORTOS_BITBANDING_SUPPORTED
 
 	/// offset of DMA register with interrupt status
 	size_t intStatusOffset_;
