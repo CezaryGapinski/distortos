@@ -1,0 +1,77 @@
+{% macro slewRate(rate) %}
+{% if rate == 0 %}low{% elif rate == 1 %}medium{% elif rate == 2 %}high{% else %}veryHigh{% endif %}
+{% endmacro %}
+
+{% macro biasMode(mode) %}
+{% if mode == 'pull-up' %}up{% elif mode == 'pull-down' %}down{% else %}none{% endif %}
+{% endmacro %}
+
+{% macro driveMode(mode) %}
+{% if mode == 'open-drain' %}true{% else %}false{% endif %}
+{% endmacro %}
+
+/**
+ * \file
+ * \brief Definition of {{ dictionaryKey }} for {{ board }}
+ *
+ * \author Copyright (C) 2014-{{ year }} Kamil Szczygiel http://www.distortec.com http://www.freddiechopin.info
+ * \author Copyright (C) 2018 Cezary Gapinski cezary.gapinski@gmail.com
+ *
+ * \par License
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not
+ * distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * \warning
+ * Automatically generated file - do not edit!
+ */
+
+#include "distortos/distortosConfiguration.h"
+
+#include "distortos/BIND_LOW_LEVEL_INITIALIZER.h"
+
+#include "distortos/chip/STM32-GPIOv2.hpp"
+
+#ifdef CONFIG_BOARD_{{ dictionaryKey | upper }}_ENABLE
+
+namespace distortos
+{
+
+namespace board
+{
+
+/*---------------------------------------------------------------------------------------------------------------------+
+| local functions
++---------------------------------------------------------------------------------------------------------------------*/
+
+/**
+ * \brief {{ dictionaryKey }} initializer for alternate pins in STM32
+ *
+ * This function is called before constructors for global and static objects via BIND_LOW_LEVEL_INITIALIZER().
+ */
+
+void {{ dictionaryKey }}Initializer()
+{
+{% for key, value in dictionary[dictionaryKey].items() if value is mapping %}
+{% if value['function'] > (2**afBits-1) %}
+{% raise '\'{}\' is not a valid alternate function index'.format(value['function']) %}
+{% endif %}
+{% if 'slew-rate' in value and value['slew-rate'] > 3 or (value['slew-rate'] == 2 and hasHighSpeed == False) %}
+{% raise '\'{}\' is not a valid alternate pin slew rate'.format(value['slew-rate']) %}
+{% endif %}
+#ifdef CONFIG_BOARD_{{ dictionaryKey | upper }}_{{ key | upper }}_ENABLE
+	chip::configureAlternateFunctionPin({# remove whitespace -#}
+	chip::Pin::p{{ value['port']['$path'][-1][4] | lower }}{{ value['pin'] }}, {# remove whitespace -#}
+	chip::PinAlternateFunction::af{{ value['function'] }}, {{ driveMode(value['drive']) }},
+		chip::PinOutputSpeed::{{ slewRate(value['slew-rate']) }}, {# remove whitespace -#}
+		chip::PinPull::{{ biasMode(value['bias']) }});
+#endif	// def CONFIG_BOARD_{{ dictionaryKey | upper }}_{{ key | upper }}_ENABLE
+{% endfor %}
+};
+
+BIND_LOW_LEVEL_INITIALIZER(50, {{ dictionaryKey }}Initializer);
+
+}	// namespace board
+
+}	// namespace distortos
+
+#endif	// def CONFIG_BOARD_{{ dictionaryKey | upper }}_ENABLE
