@@ -1,0 +1,33 @@
+#
+# file: {{ metadata[metadataIndex][2] }}
+#
+# author: Copyright (C) 2014-{{ year }} Kamil Szczygiel http://www.distortec.com http://www.freddiechopin.info
+# author: Copyright (C) 2018 Cezary Gapinski cezary.gapinski@gmail.com
+#
+# This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not
+# distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+# Automatically generated file - do not edit!
+#
+
+if BOARD_{{ (outputPath + '_' + board) | sanitize('[^0-9A-Za-z]') | upper }}
+
+comment "{{ board }} {{ dictionaryKey }} options"
+
+config BOARD_{{ dictionaryKey | upper }}_ENABLE
+	bool "Enable {{ dictionaryKey }}"
+	default y
+
+if BOARD_{{ dictionaryKey | upper }}_ENABLE
+{% for key, value in dictionary[dictionaryKey].items() if value is mapping %}
+
+config BOARD_{{ dictionaryKey | upper }}_{{ key | upper }}_ENABLE
+	bool "Enable {{ key }}"
+	default y
+	select CHIP_{{ value['port']['compatible'][0].rpartition(',')[2] | sanitize('[^0-9A-Za-z]') | upper }}_
+	{{- value['port']['$path'][-1] }}_ENABLE
+{%endfor%}
+
+endif	# BOARD_{{ dictionaryKey | upper }}_ENABLE
+
+endif	# BOARD_{{ (outputPath + '_' + board) | sanitize('[^0-9A-Za-z]') | upper }}
