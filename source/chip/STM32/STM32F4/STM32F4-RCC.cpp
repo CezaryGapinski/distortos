@@ -18,6 +18,17 @@
 
 #include <cerrno>
 
+#if defined(CONFIG_CHIP_STM32F427) || defined(CONFIG_CHIP_STM32F429) || defined(CONFIG_CHIP_STM32F437) || \
+		defined(CONFIG_CHIP_STM32F439) || defined(CONFIG_CHIP_STM32F446) || defined(CONFIG_CHIP_STM32F469) || \
+		defined(CONFIG_CHIP_STM32F479)
+#define RCC_DCKCFGR_PLLSAIDIVR_DIV2					0x00000000U
+#define RCC_DCKCFGR_PLLSAIDIVR_DIV4					0x00010000U
+#define RCC_DCKCFGR_PLLSAIDIVR_DIV8					0x00020000U
+#define RCC_DCKCFGR_PLLSAIDIVR_DIV16					0x00030000U
+#endif	// defined(CONFIG_CHIP_STM32F427) || defined(CONFIG_CHIP_STM32F429) || defined(CONFIG_CHIP_STM32F437) ||
+		// defined(CONFIG_CHIP_STM32F439) || defined(CONFIG_CHIP_STM32F446) || defined(CONFIG_CHIP_STM32F469) ||
+		// defined(CONFIG_CHIP_STM32F479)
+
 namespace distortos
 {
 
@@ -74,6 +85,52 @@ int configureApbClockDivider(const bool ppre2, const uint8_t ppre)
 
 	return EINVAL;
 }
+
+#if defined(CONFIG_CHIP_STM32F427) || defined(CONFIG_CHIP_STM32F429) || defined(CONFIG_CHIP_STM32F437) || \
+		defined(CONFIG_CHIP_STM32F439) || defined(CONFIG_CHIP_STM32F446) || defined(CONFIG_CHIP_STM32F469) || \
+		defined(CONFIG_CHIP_STM32F479)
+int configureLcdClockDividers(uint8_t pllsair, uint8_t pllsaidivr)
+{
+	if (pllsair < minPllSair || pllsair > maxPllSair)
+		return EINVAL;
+
+	static const std::pair<decltype(pllsaidivr), decltype(RCC_DCKCFGR_PLLSAIDIVR_DIV2)> associations[]
+	{
+			{pllsaiDivr2, RCC_DCKCFGR_PLLSAIDIVR_DIV2},
+			{pllsaiDivr4, RCC_DCKCFGR_PLLSAIDIVR_DIV4},
+			{pllsaiDivr8, RCC_DCKCFGR_PLLSAIDIVR_DIV8},
+			{pllsaiDivr16, RCC_DCKCFGR_PLLSAIDIVR_DIV16},
+	};
+
+	for (auto& association : associations)
+		if (association.first == pllsaidivr)
+		{
+			RCC->DCKCFGR = (RCC->DCKCFGR & ~RCC_DCKCFGR_PLLSAIDIVR) | association.second;
+			RCC->PLLSAICFGR = (RCC->PLLSAICFGR & ~RCC_PLLSAICFGR_PLLSAIR) | pllsair << RCC_PLLSAICFGR_PLLSAIR_Pos;
+			return 0;
+		}
+
+	return EINVAL;
+}
+
+int enablePllSai(uint16_t pllsain)
+{
+	if (pllsain < minPllSain || pllsain > maxPllSain)
+		return EINVAL;
+
+	RCC->PLLSAICFGR = (RCC->PLLSAICFGR & ~RCC_PLLSAICFGR_PLLSAIN) | pllsain << RCC_PLLSAICFGR_PLLSAIN_Pos;
+	STM32_BITBAND(RCC, CR, PLLSAION) = 1;
+	while (STM32_BITBAND(RCC, CR, PLLSAIRDY) == 0);	// wait until PLLSAI is stable
+	return 0;
+}
+
+void disablePllSai()
+{
+	STM32_BITBAND(RCC, CR, PLLSAION) = 0;
+}
+#endif	// defined(CONFIG_CHIP_STM32F427) || defined(CONFIG_CHIP_STM32F429) || defined(CONFIG_CHIP_STM32F437) ||
+		// defined(CONFIG_CHIP_STM32F439) || defined(CONFIG_CHIP_STM32F446) || defined(CONFIG_CHIP_STM32F469) ||
+		// defined(CONFIG_CHIP_STM32F479)
 
 void configurePllClockSource(const bool hse)
 {
