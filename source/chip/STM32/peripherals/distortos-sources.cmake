@@ -15,5 +15,6 @@ if(CONFIG_CHIP_STM32)
 	include(${CMAKE_CURRENT_LIST_DIR}/SPIv2/distortos-sources.cmake)
 	include(${CMAKE_CURRENT_LIST_DIR}/USARTv1/distortos-sources.cmake)
 	include(${CMAKE_CURRENT_LIST_DIR}/USARTv2/distortos-sources.cmake)
+	include(${CMAKE_CURRENT_LIST_DIR}/LTDCv1/distortos-sources.cmake)
 
 endif()
