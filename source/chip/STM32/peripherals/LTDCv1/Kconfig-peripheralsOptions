@@ -1,0 +1,23 @@
+#
+# file: Kconfig-peripheralsOptions
+#
+# author: Copyright (C) 2018 Cezary Gapinski cezary.gapinski@gmail.com
+#
+# This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not
+# distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+
+if CHIP_STM32_LTDCV1
+
+config CHIP_STM32_LTDCV1_ENABLE
+	bool "LTDC low-level driver"
+	default n
+	depends on CHIP_STM32_LTDCV1_HAS_LTDC
+	help
+		Enable LTDC low-level driver
+
+config CHIP_STM32_LTDCV1_HAS_LTDC
+	bool
+	default n
+
+endif	# CHIP_STM32_LTDCV1
