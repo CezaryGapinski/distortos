@@ -39,6 +39,128 @@ leds:
       pin: 14
     alternative-names:
     - Red
+displayPinmux:
+  compatible:
+  - ST,STM32-GPIOv2-pinmux
+  tftVSync:
+    port: !Reference {label: GPIOA}
+    pin: 4
+    function: 14
+  tftHSync:
+    port: !Reference {label: GPIOC}
+    pin: 6
+    function: 14
+  tftDe:
+    port: !Reference {label: GPIOF}
+    pin: 10
+    function: 14
+  tftClk:
+    port: !Reference {label: GPIOG}
+    pin: 7
+    function: 14
+  tftR2:
+    port: !Reference {label: GPIOC}
+    pin: 10
+    function: 14
+  tftR3:
+    port: !Reference {label: GPIOB}
+    pin: 0
+    function: 9
+  tftR4:
+    port: !Reference {label: GPIOA}
+    pin: 11
+    function: 14
+  tftR5:
+    port: !Reference {label: GPIOA}
+    pin: 12
+    function: 14
+  tftR6:
+    port: !Reference {label: GPIOB}
+    pin: 1
+    function: 9
+  tftR7:
+    port: !Reference {label: GPIOG}
+    pin: 6
+    function: 14
+  tftG2:
+    port: !Reference {label: GPIOA}
+    pin: 6
+    function: 14
+  tftG3:
+    port: !Reference {label: GPIOG}
+    pin: 10
+    function: 9
+  tftG4:
+    port: !Reference {label: GPIOB}
+    pin: 10
+    function: 14
+  tftG5:
+    port: !Reference {label: GPIOB}
+    pin: 11
+    function: 14
+  tftG6:
+    port: !Reference {label: GPIOC}
+    pin: 7
+    function: 14
+  tftG7:
+    port: !Reference {label: GPIOD}
+    pin: 3
+    function: 14
+  tftB2:
+    port: !Reference {label: GPIOD}
+    pin: 6
+    function: 14
+  tftB3:
+    port: !Reference {label: GPIOG}
+    pin: 11
+    function: 14
+  tftB4:
+    port: !Reference {label: GPIOG}
+    pin: 12
+    function: 9
+  tftB5:
+    port: !Reference {label: GPIOA}
+    pin: 3
+    function: 14
+  tftB6:
+    port: !Reference {label: GPIOB}
+    pin: 8
+    function: 14
+  tftB7:
+    port: !Reference {label: GPIOB}
+    pin: 9
+    function: 14
+  spiSck:
+    port: !Reference {label: GPIOF}
+    pin: 7
+    function: 5
+    bias: pull-down
+    slew-rate: 1
+  spiMosi:
+    port: !Reference {label: GPIOF}
+    pin: 9
+    function: 5
+    bias: pull-down
+    slew-rate: 1
+displayOutputs:
+  compatible:
+  - GPIO-outputs
+  spiCsx:
+    GPIO:
+      port: !Reference {label: GPIOC}
+      pin: 2
+  rdx:
+    GPIO:
+      port: !Reference {label: GPIOD}
+      pin: 12
+  te:
+    GPIO:
+      port: !Reference {label: GPIOD}
+      pin: 11
+  wrxDcx:
+    GPIO:
+      port: !Reference {label: GPIOD}
+      pin: 13
 regulators:
   VDD:
     compatible:
