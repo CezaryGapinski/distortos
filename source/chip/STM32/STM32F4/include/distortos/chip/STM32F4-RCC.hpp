@@ -82,6 +82,18 @@ constexpr uint8_t maxPllr {7};
 #endif	// defined(CONFIG_CHIP_STM32F412) || defined(CONFIG_CHIP_STM32F413) || defined(CONFIG_CHIP_STM32F423) ||
 		// defined(CONFIG_CHIP_STM32F446) || defined(CONFIG_CHIP_STM32F469) || defined(CONFIG_CHIP_STM32F479)
 
+/// minimum allowed value for PLLISAIN
+constexpr uint16_t minPllSain {50};
+
+/// maximum allowed value for PLLISAIN
+constexpr uint16_t maxPllSain {432};
+
+/// minimum allowed value for PLLSAIR
+constexpr uint8_t minPllSair {2};
+
+/// maximum allowed value for PLLSAIR
+constexpr uint8_t maxPllSair {7};
+
 /// first allowed value for PLLP - 2
 constexpr uint8_t pllpDiv2 {2};
 
@@ -136,6 +148,18 @@ constexpr uint8_t ppreDiv8 {8};
 /// fifth allowed value for APB1 and APB2 dividers - 16
 constexpr uint8_t ppreDiv16 {16};
 
+/// first allowed value for PLLSAIDIVR - 2
+constexpr uint8_t pllsaiDivr2 {2};
+
+/// second allowed value for PLLSAIDIVR - 4
+constexpr uint8_t pllsaiDivr4 {4};
+
+/// third allowed value for PLLSAIDIVR - 8
+constexpr uint8_t pllsaiDivr8 {8};
+
+/// fourth allowed value for PLLSAIDIVR - 16
+constexpr uint8_t pllsaiDivr16 {16};
+
 /*---------------------------------------------------------------------------------------------------------------------+
 | global functions' declarations
 +---------------------------------------------------------------------------------------------------------------------*/
@@ -163,6 +187,48 @@ int configureAhbClockDivider(uint16_t hpre);
  */
 
 int configureApbClockDivider(bool ppre2, uint8_t ppre);
+
+#if defined(CONFIG_CHIP_STM32F427) || defined(CONFIG_CHIP_STM32F429) || defined(CONFIG_CHIP_STM32F437) || \
+		defined(CONFIG_CHIP_STM32F439) || defined(CONFIG_CHIP_STM32F446) || defined(CONFIG_CHIP_STM32F469) || \
+		defined(CONFIG_CHIP_STM32F479)
+
+/**
+ * \brief Configures dividers of PLLSAI LCD clock peripheral (PLLSAIR and PLLSAIDIVR values).
+ *
+ * \param [in] pllsair is the PLLSAIR value, [2; 7] or [minPllSair; maxPllSair]
+ * \param [in] pllsaidivr is the PLLSAIDIVR value, {2, 4, 8, 16} or {pllsaiDivr2, pllsaiDivr4, pllsaiDivr8, pllsaiDivr16}
+ *
+ * \return 0 on success, error code otherwise:
+ * - EINVAL - \a pllsair or \a pllsaidivr value is invalid;
+ */
+
+int configureLcdClockDividers(uint8_t pllsair, uint8_t pllsaidivr);
+
+/**
+ * \brief Enables PLLSAI clock using selected parameters and waits until it is stable.
+ *
+ * \warning Before changing configuration of any PLL make sure that they are not used in any way (as source of SAI1 or LCD clocks)
+ * and that they are disabled.
+ *
+ * \param [in] pllsain is the PLLSAIN value for PLLSAI output clock, [50; 432] or [minPllSain; maxPllSain]
+ *
+ * \return 0 on success, error code otherwise:
+ * - EINVAL - \a pllsain value is invalid;
+ */
+
+int enablePllSai(uint16_t pllsain);
+
+/**
+ * \brief Disables PLLSAI clock.
+ *
+ * \warning Before changing configuration of PLLSAI make sure that it is not used in any way (as source of SAI1 or LCD clocks).
+ */
+
+void disablePllSai();
+
+#endif	// defined(CONFIG_CHIP_STM32F427) || defined(CONFIG_CHIP_STM32F429) || defined(CONFIG_CHIP_STM32F437) ||
+		// defined(CONFIG_CHIP_STM32F439) || defined(CONFIG_CHIP_STM32F446) || defined(CONFIG_CHIP_STM32F469) ||
+		// defined(CONFIG_CHIP_STM32F479)
 
 /**
  * \brief Configures clock source of main and audio PLLs.

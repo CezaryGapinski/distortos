@@ -245,6 +245,33 @@ constexpr uint32_t apb2Frequency {ahbFrequency / CONFIG_CHIP_STM32F4_RCC_PPRE2};
 
 static_assert(apb2Frequency <= maxApb2Frequency, "Invalid APB2 (high speed) frequency!");
 
+#if defined(CONFIG_CHIP_STM32F4_RCC_PLLSAIN)
+
+#if defined(CONFIG_CHIP_STM32F427) || defined(CONFIG_CHIP_STM32F429) || defined(CONFIG_CHIP_STM32F437) || \
+		defined(CONFIG_CHIP_STM32F439) || defined(CONFIG_CHIP_STM32F446) || defined(CONFIG_CHIP_STM32F469) || \
+		defined(CONFIG_CHIP_STM32F479)
+
+/// minimum allowed value for PLLSAI VCO output frequency, Hz
+constexpr uint32_t minPllSaiVcoOutFrequency {100000000};
+
+/// maximum allowed value for PLLSAI VCO output frequency, Hz
+constexpr uint32_t maxPllSaiVcoOutFrequency {432000000};
+
+/// PLLSAI frequency, Hz
+constexpr uint32_t PllSaiVcoOutFrequency {vcoInFrequency * CONFIG_CHIP_STM32F4_RCC_PLLSAIN};
+
+static_assert(vcoInFrequency > 1000000 && 50 <= CONFIG_CHIP_STM32F4_RCC_PLLSAIN && CONFIG_CHIP_STM32F4_RCC_PLLSAIN <= 99,
+		"Invalid PLLSAI multiplication factor!");
+
+static_assert(minPllSaiVcoOutFrequency <= PllSaiVcoOutFrequency &&  PllSaiVcoOutFrequency <= maxPllSaiVcoOutFrequency,
+		"Invalid PLLSAI output frequency!");
+
+#endif	// defined(CONFIG_CHIP_STM32F4_RCC_PLLSAIN)
+
+#endif	// defined(CONFIG_CHIP_STM32F427) || defined(CONFIG_CHIP_STM32F429) || defined(CONFIG_CHIP_STM32F437) ||
+		// defined(CONFIG_CHIP_STM32F439) || defined(CONFIG_CHIP_STM32F446) || defined(CONFIG_CHIP_STM32F469) ||
+		// defined(CONFIG_CHIP_STM32F479)
+
 }	// namespace chip
 
 }	// namespace distortos
