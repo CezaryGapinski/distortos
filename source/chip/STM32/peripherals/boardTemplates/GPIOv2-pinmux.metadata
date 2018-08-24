@@ -1,0 +1,11 @@
+{% if 'pin-controller' in dictionary %}
+{% for compatible in dictionary['pin-controller']['compatible'] if compatible == 'ST,STM32-GPIO-v2-pin-controller' %}
+{% for key, value in dictionary.items() if 'compatible' in value and 'ST,STM32-GPIOv2-pinmux' in value['compatible'] %}
+('source/board/boardTemplates/STM32_GPIOv2-pinmux.cpp.jinja',
+		{'dictionaryKey': '{{ key }}',
+				'afBits': {{ dictionary['pin-controller']['AF-bits'] }},
+				'hasHighSpeed': {{ dictionary['pin-controller']['has-high-speed'] }}},
+		'{{ sanitizedBoard }}-{{ key }}.cpp'),
+{% endfor %}
+{% endfor %}
+{% endif %}
