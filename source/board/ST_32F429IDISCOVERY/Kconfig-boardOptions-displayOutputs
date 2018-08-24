@@ -1,0 +1,44 @@
+#
+# file: Kconfig-boardOptions-displayOutputs
+#
+# author: Copyright (C) 2014-2018 Kamil Szczygiel http://www.distortec.com http://www.freddiechopin.info
+#
+# This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not
+# distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+# Automatically generated file - do not edit!
+#
+
+if BOARD_SOURCE_BOARD_ST_32F429IDISCOVERY_ST_32F429IDISCOVERY
+
+comment "ST,32F429IDISCOVERY displayOutputs options"
+
+config BOARD_DISPLAYOUTPUTS_ENABLE
+	bool "Enable displayOutputs"
+	default y
+
+if BOARD_DISPLAYOUTPUTS_ENABLE
+
+config BOARD_DISPLAYOUTPUTS_SPICSX_ENABLE
+	bool "Enable spiCsx"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOC_ENABLE
+
+config BOARD_DISPLAYOUTPUTS_RDX_ENABLE
+	bool "Enable rdx"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOD_ENABLE
+
+config BOARD_DISPLAYOUTPUTS_TE_ENABLE
+	bool "Enable te"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOD_ENABLE
+
+config BOARD_DISPLAYOUTPUTS_WRXDCX_ENABLE
+	bool "Enable wrxDcx"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOD_ENABLE
+
+endif	# BOARD_DISPLAYOUTPUTS_ENABLE
+
+endif	# BOARD_SOURCE_BOARD_ST_32F429IDISCOVERY_ST_32F429IDISCOVERY

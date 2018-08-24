@@ -1,0 +1,145 @@
+#
+# file: Kconfig-boardOptions-displayPinmux
+#
+# author: Copyright (C) 2014-2018 Kamil Szczygiel http://www.distortec.com http://www.freddiechopin.info
+# author: Copyright (C) 2018 Cezary Gapinski cezary.gapinski@gmail.com
+#
+# This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not
+# distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+# Automatically generated file - do not edit!
+#
+
+if BOARD_SOURCE_BOARD_ST_32F429IDISCOVERY_ST_32F429IDISCOVERY
+
+comment "ST,32F429IDISCOVERY displayPinmux options"
+
+config BOARD_DISPLAYPINMUX_ENABLE
+	bool "Enable displayPinmux"
+	default y
+
+if BOARD_DISPLAYPINMUX_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTVSYNC_ENABLE
+	bool "Enable tftVSync"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOA_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTHSYNC_ENABLE
+	bool "Enable tftHSync"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOC_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTDE_ENABLE
+	bool "Enable tftDe"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOF_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTCLK_ENABLE
+	bool "Enable tftClk"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOG_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTR2_ENABLE
+	bool "Enable tftR2"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOC_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTR3_ENABLE
+	bool "Enable tftR3"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOB_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTR4_ENABLE
+	bool "Enable tftR4"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOA_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTR5_ENABLE
+	bool "Enable tftR5"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOA_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTR6_ENABLE
+	bool "Enable tftR6"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOB_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTR7_ENABLE
+	bool "Enable tftR7"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOG_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTG2_ENABLE
+	bool "Enable tftG2"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOA_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTG3_ENABLE
+	bool "Enable tftG3"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOG_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTG4_ENABLE
+	bool "Enable tftG4"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOB_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTG5_ENABLE
+	bool "Enable tftG5"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOB_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTG6_ENABLE
+	bool "Enable tftG6"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOC_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTG7_ENABLE
+	bool "Enable tftG7"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOD_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTB2_ENABLE
+	bool "Enable tftB2"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOD_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTB3_ENABLE
+	bool "Enable tftB3"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOG_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTB4_ENABLE
+	bool "Enable tftB4"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOG_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTB5_ENABLE
+	bool "Enable tftB5"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOA_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTB6_ENABLE
+	bool "Enable tftB6"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOB_ENABLE
+
+config BOARD_DISPLAYPINMUX_TFTB7_ENABLE
+	bool "Enable tftB7"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOB_ENABLE
+
+config BOARD_DISPLAYPINMUX_SPISCK_ENABLE
+	bool "Enable spiSck"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOF_ENABLE
+
+config BOARD_DISPLAYPINMUX_SPIMOSI_ENABLE
+	bool "Enable spiMosi"
+	default y
+	select CHIP_STM32_GPIO_V2_GPIOF_ENABLE
+
+endif	# BOARD_DISPLAYPINMUX_ENABLE
+
+endif	# BOARD_SOURCE_BOARD_ST_32F429IDISCOVERY_ST_32F429IDISCOVERY
